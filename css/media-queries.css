@@ -40,6 +40,10 @@
     .cv {
         display: none;
     }
+
+    .project-list {
+        flex-direction: column;
+    }
 }
 
 /* Large screens only */
