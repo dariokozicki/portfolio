@@ -1,0 +1,40 @@
+{
+  "name": "portfolio-kozicki-dario",
+  "version": "1.0.0",
+  "description": "Dario Kozicki's Portfolio",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "core-js": "^3.6.4"
+  },
+  "devDependencies": {
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dariokozicki/portfolio.git"
+  },
+  "keywords": [
+    "portfolio",
+    "projects",
+    "dario",
+    "kozicki"
+  ],
+  "author": "Dario Kozicki",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/dariokozicki/portfolio/issues"
+  },
+  "homepage": "https://github.com/dariokozicki/portfolio#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

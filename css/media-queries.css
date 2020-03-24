@@ -1,5 +1,10 @@
 /* Small screens only */
 @media only screen and (max-width: 600px) {
+    a.cv-button{
+        display:block;
+        margin:0.4em auto;
+    }
+
     .navbar {
         bottom: 0;
         width: 100vw;
@@ -16,11 +21,24 @@
 
     .nav-link {
         justify-content: center;
+        width: 4rem;
     }
 
     main {
         margin-left: 0;
         margin-bottom: 5rem;
+    }
+
+    .down-button {
+        margin-left: 0rem;
+    }
+
+    .header-text{
+        margin-left: 0rem;
+    }
+
+    .cv {
+        display: none;
     }
 }
 
@@ -43,5 +61,17 @@
 
     .navbar:hover .logo-text {
         left: 0px;
+    }
+
+    .header-text {
+        margin-left: 3rem;
+    }
+
+    .down-button {
+        margin-left: 3rem;
+    }
+
+    a.cv-button {
+        display:none;
     }
 }
