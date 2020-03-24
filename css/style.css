@@ -265,6 +265,7 @@ main h1 {
     min-width: 100%;
     object-fit: cover;
     vertical-align: bottom;
+    transition: 200ms ease;
 }
 
 .project-img:hover + h3 {
@@ -274,4 +275,5 @@ main h1 {
 
 .project-img:hover {
     cursor: pointer;
+    filter: brightness(105%);
 }
