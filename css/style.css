@@ -247,8 +247,9 @@ main h1 {
     width: auto;
     flex-grow: 1;
     padding: 0px;
-    margin: 5px;
+    margin: 10px;
     border: 2px solid black;
+    flex-shrink: 1;
 }
 
 .project-item h3 {
@@ -277,3 +278,43 @@ main h1 {
     cursor: pointer;
     filter: brightness(105%);
 }
+
+.alert {
+    padding: 10px;
+    background-color: #2196F3; /* Red */
+    color: white;
+    margin-bottom: 15px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, 0);
+    z-index: 5;
+    width: 100vw;
+    line-height: 20px;
+    height: auto;
+    transition: 200ms ease;
+}
+
+.alert:hover {
+    cursor: pointer;
+    filter: brightness(105%);
+}
+
+/* The close button */
+.closebtn {
+    padding: 0px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-right: 1rem;
+    font-size: 22px;
+    line-height: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  }
