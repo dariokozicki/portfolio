@@ -6,7 +6,6 @@
 		<script src="https://kit.fontawesome.com/c018f6ab26.js"
 		 crossorigin="anonymous"></script>
 		<script src="https://unpkg.com/i18next/i18next.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script defer src="js/theme.js"></script>
 		<script defer src="js/anchor.js"></script>
@@ -15,14 +14,19 @@
 		<link rel="stylesheet" href="css/media-queries.css">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" 
 		rel="stylesheet">
-		<title>Darío Kozicki</title>
+		<title id="personal-portfolio"></title>
 	</head>
 	<body>
 		<div class="header-image" id="home"></div>
 		<div class="header-text">
-			<h1>Manzana</h1>
+			<h1 id="dario"></h1>
+			<h2>
+				<span id="fullstack-dev"></span>
+				<span id="design" class="is-this-for-ants"></span>
+				<span id="solutions" class="is-this-for-ants"></span>
+			</h2>
 		</div>
-		<a href="#about">
+		<a href="#about-title">
 		  <i class="fas fa-chevron-down fa-3x down-button"></i>
 		</a>
 		<nav class="navbar">
@@ -40,15 +44,15 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="#about" class="nav-link">
+					<a href="#about-title" class="nav-link">
 						<i class="fas fa-bug fa-2x fa-primary"></i>
-						<span>&nbsp&nbsp</span><span class="link-text" id="about-text"></span>
+						<span>&nbsp&nbsp</span><span class="link-text" id="about-reference"></span>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="#work" class="nav-link">
+					<a href="#projects-title" class="nav-link">
 						<i class="fas fa-terminal fa-2x fa-primary"></i>
-						<span class="link-text" id="projects"></span>
+						<span class="link-text" id="projects-reference"></span>
 					</a>
 				</li>
 				<li class="nav-item cv">
@@ -67,13 +71,16 @@
 					<a class="nav-link">
 						<i id=lightIcon class="fas fa-lightbulb fa-2x fa-primary theme-icon"></i>
 						<i id=darkIcon class="fas fa-moon fa-2x fa-primary theme-icon"></i>
-						<span class="link-text">Mode</span>
+						<span class="link-text">
+							<span id="light-mode"></span>
+							<span id="dark-mode"></span>
+						</span>
 					</a>
 				</li>
 			</ul>
 		</nav>
 		<main>
-			<h1 id="about"></h1>
+			<h1 id="about-title"></h1>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac cursus sapien. Aliquam id ullamcorper erat, tempor luctus nibh. Sed at arcu lectus. Nullam viverra eu nibh quis sagittis. Nullam lobortis velit vel ligula pretium cursus. Praesent eget faucibus urna. Praesent lacus metus, accumsan a venenatis lobortis, tincidunt in augue. Nam facilisis maximus quam, in congue mi. Aliquam nec tempus orci. Cras non bibendum tellus, vel dapibus est. In hac habitasse platea dictumst.
 			</p>
@@ -87,9 +94,9 @@
 				Donec feugiat, erat a luctus pretium, quam quam vulputate sapien, sit amet consequat ipsum leo vel nisi. Aenean imperdiet massa leo, in pellentesque est cursus sed. Donec pretium eget augue at lacinia. Etiam ultrices, purus nec vehicula porttitor, purus justo convallis sapien, ut volutpat dolor risus in quam. Proin felis felis, convallis sed convallis non, tristique vitae ex. Proin auctor quis elit lacinia condimentum. Aenean urna quam, condimentum non gravida in, condimentum et mi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur luctus ipsum sapien, eu eleifend diam tempor ultrices. Mauris placerat quam vitae tortor pretium rhoncus. Pellentesque rhoncus ante consectetur lectus semper rhoncus. Integer feugiat gravida imperdiet. Quisque interdum accumsan semper. Pellentesque scelerisque neque ac risus commodo pharetra ut nec lacus. Donec quis vehicula neque, eget blandit felis.
 			</p>			
 			<a href="./docs/CV-DarioKozicki-Extendido.pdf" download target="_blank" class="cv-button">
-				<i class="fas fa-cloud-download-alt fa-2x"></i><h3 style="display: inline;">&nbspCurriculum Vitae</h1>
+				<i class="fas fa-cloud-download-alt fa-2x"></i><span>&nbsp&nbsp&nbsp</span><h3 style="display: inline;">Curriculum Vitae</h1>
 			</a>
-			<h1 id="work">Projects</h1>
+			<h1 id="projects-title"></h1>
 			<p>
 				Nam non rhoncus sem. Mauris scelerisque non felis in condimentum. In malesuada quam in arcu mattis tincidunt. Suspendisse potenti. Nam congue, tellus vel porttitor ornare, leo nisl molestie ipsum, nec mattis tellus nunc vitae enim. Curabitur placerat vulputate tortor vel consectetur. Mauris eget lacus lorem. Nulla tempus neque eu auctor dignissim.
 			</p>

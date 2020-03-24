@@ -225,3 +225,11 @@ a.cv-button:hover{
 main h1 {
     text-align: center;
 }
+
+.is-this-for-ants {
+    display: none;
+}
+
+.hidden{
+    display:none;
+}

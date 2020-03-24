@@ -5,20 +5,38 @@ const translations = {
     resources: {
         en: {
             translation: {
-                "about-text": "About",
-                "projects": "Projects",
+                "about-title": "About",
+                "about-reference": "About",
+                "projects-title": "Projects",
+                "projects-reference": "Projects",
                 "start": "Home",
                 "language": "English",
-                "cv-text": "Curriculum"
+                "cv-text": "Curriculum",
+                "dario": "Darío Kozicki",
+                "fullstack-dev": "Fullstack Development.",
+                "design":"Design.",
+                "solutions":"Elegant Solutions.",
+                "personal-portfolio": "Personal Portfolio",
+                "light-mode": "Light Mode",
+                "dark-mode": "Dark Mode"
             }
         },
         es: {
             translation: {
-                "about-text": "Acerca de",
-                "projects": "Proyectos",
+                "about-title": "Acerca de",
+                "about-reference": "Acerca de",
+                "projects-title": "Proyectos",
+                "projects-reference": "Proyectos",
                 "start": "Inicio",
                 "language": "Español",
-                "cv-text": "Currículo"
+                "cv-text": "Currículo",
+                "dario": "Darío Kozicki",
+                "personal-portfolio": "Portfolio Personal",
+                "fullstack-dev": "Desarrollo Fullstack.",
+                "design":"Diseño.",
+                "solutions":"Soluciones a medida.",
+                "light-mode": "Modo Claro",
+                "dark-mode": "Modo Oscuro"
             }
         }
     }
@@ -43,6 +61,7 @@ i18next.on('languageChanged', () => {
 
 function updateContent(){
     Object.keys(translations.resources.es.translation).forEach( phrase => {
-        document.getElementById(phrase).innerHTML = i18next.t(phrase);
+        if (document.getElementById(phrase))  
+            document.getElementById(phrase).innerHTML = i18next.t(phrase);
     });
 }
