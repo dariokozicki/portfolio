@@ -44,6 +44,10 @@
     .project-list {
         flex-direction: column;
     }
+
+    .project-item {
+        height: 20vh;
+    }
 }
 
 /* Large screens only */
@@ -81,5 +85,9 @@
     
     .is-this-for-ants{
         display: inline;
+    }
+
+    .project-item {
+        height: 40vh;
     }
 }
