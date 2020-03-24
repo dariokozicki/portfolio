@@ -174,7 +174,7 @@ body::-webkit-scrollbar-thumb{
     transform: translate(-50%, -50%);
     z-index: 2;
     width: 60%;
-    height: 30%;
+    height: auto;
     padding: 1rem;
     text-align: center;
     transition: all 600ms ease;
