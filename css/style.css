@@ -7,6 +7,7 @@
     --bg-secondary: #141418;
     --transition-speed: 600ms;
     --hover-marine: #00CED1;
+    --border-primary: #f1f1f1;
 }
 
 main {
@@ -130,6 +131,7 @@ body::-webkit-scrollbar-thumb {
     --bg-secondary: #141418;
     --scrollbar-track: #23232e;
     --scrollbar-thumb: #D100CE;
+    --border-primary: #141418;
 }
 
 .light {
@@ -139,6 +141,7 @@ body::-webkit-scrollbar-thumb {
     --bg-secondary: #e4e4e4;
     --scrollbar-track: #ffffff;
     --scrollbar-thumb: #cccccc;
+    --border-primary: #f1f1f1;
 }
 
 .theme-icon {
@@ -171,7 +174,7 @@ body::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
     font-weight: bold;
-    border: 3px solid #f1f1f1;
+    border: 3px solid var(--border-primary);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -206,7 +209,7 @@ a.cv-button:hover {
 }
 
 .down-button {
-    color: var(--bg-secondary);
+    color: #23232e;
     font-weight: bold;
     position: absolute;
     top: 90%;
