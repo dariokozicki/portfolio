@@ -10,7 +10,7 @@ El sitio no usa ningún framework ni preprocesador, en su lugar se realizó sól
 El objectivo es brindar una página personalizada que muestre las cosas que voy haciendo, sirviendo a su vez como una muestra en sí misma de lo que hago.
 
 
-[Hacé click acá para verlo en tu navegador!](https://dariokozicki.github.io/portfolio/)
+[Hacé click acá para verlo en tu navegador!](thekozicki.tk)
 
 ## English
 
@@ -20,4 +20,4 @@ The site doesn't make use of any frameworks or preprocessors; instead, it seizes
 
 The objective of this site is to provide a customized page to display the things I work on, as well as serve as an example of what I do.
 
-[Click here to see it online!](https://dariokozicki.github.io/portfolio/)
+[Click here to see it online!](thekozicki.tk)
