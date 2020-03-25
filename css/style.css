@@ -259,6 +259,7 @@ main h1 {
     background-color: var(--bg-primary);
     transition: 200ms ease;
     text-align: center;
+    text-decoration: none;
 }
   
 .project-img {
@@ -301,7 +302,6 @@ main h1 {
     filter: brightness(105%);
 }
 
-/* The close button */
 .closebtn {
     padding: 0px;
     color: white;
@@ -314,7 +314,19 @@ main h1 {
     transition: 0.3s;
   }
   
-  /* When moving the mouse over the close button */
-  .closebtn:hover {
+.closebtn:hover {
     color: black;
-  }
+}
+
+.subt {
+    text-decoration: underline;
+}
+
+.collapser {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type:none;
+    align-items: center;
+    flex-direction: row;
+    padding: 0px;
+}

@@ -25,7 +25,16 @@ const translations = {
                 "p4": "I'm learning bit by bit front-end, and this site is an excuse to keep on learning. It doesn't contain any framework because I set myself up to learn the CSS fundamentals and keep it flexible. I do well on HTML5, CSS, Javascript, and I often make use of libraries such as jQuery, FontAwesome, i18next, and Handlebars for templating. If you'd like to see the source code, you're welcome to search through ",
                 "alert-responsive": "This site is responsive. Use it on any devices!",
                 "hey": "Hey!",
-                "repo": "my repository."
+                "repo": "my repository.",
+                "tools":"Skills:",
+                "student": "Systems Engineering student at UTN",
+                "design-patterns": "Design Patterns",
+                "lambda-ex": "Lambda Expressions",
+                "padaigms": "Paradigms",
+                "class-diagram": "Class Diagram",
+                "sequence-diagram": "Sequence Diagram",
+                "er-diagram": "ER Diagram",
+                "use-case-diagram": "Use Case Diagram"
             }
         },
         es: {
@@ -44,13 +53,26 @@ const translations = {
                 "solutions":"Soluciones a medida.",
                 "light-mode": "Modo Claro",
                 "dark-mode": "Modo Oscuro",
-                "p1": "Me llamo Darío. Soy un desarrollador y estudiante de Ingeniería en Sistemas, oriundo de Buenos Aires. Me dedico a diseñar y programar soluciones que se ajusten a las necesidades de otros. Estoy interesado en trabajos full-time que tengan algunos días de home office y otros on-site, o que sean remotos con mucha comunicación.",
-                "p2": "Brindo valor a la empresa para la que trabajo, ocupándome de entender el dominio, modelando y documentando, analizando la mejor solución con mis pares, implementando, y realizando pruebas automatizadas: ahorrando tiempo y recursos tanto a la empresa como a mí. Compartir ideas me es importante, por eso considero que un trabajo basado en el intercambio de opiniones nos hace bien a todos. Trabajar con otras personas me permite aprender de ellos y mejorar.",
-                "p3": "Mi fuerte está en el backend, donde realizo modelos robustos que satisfacen las necesidades de hoy y escalan mañana. Java es mi principal lenguaje, haciendo uso de Spring, Spark, Hibernate, Gson y Handlebars. También sé usar JDBC, realizando queries contra (T- / PL- /- ) SQL. Proveo y consumo APIs REST en mis proyectos, aunque también he usado SOAP. Los paradigmas orientado a objetos y funcional, son los que más me gustan, combinando patrones de diseño con expresiones lambda en mi día a día.    ",
-                "p4": "Estoy aprendiendo de a poco front-end, y esta página es una excusa para seguir practicando. No contiene ningún framework porque me propuse aprender lo fundamental de CSS y mantenerme flexible. Me manejo bien en HTML5, CSS, Javascript, y puedo hacer uso de diversas librerías como jQuery, FontAwesome, i18next, y Handlebars para templating. Si querés ver cómo está hecho, te invito a pasar por ",
+                "p1": "Me gustaría participar de tu proyecto presencial o remoto. Soy Darío y me dedico al desarrollo web. Hice este sitio de cero para mostrarte las cosas que hago y mi vocación por el desarrollo. Más abajo vas a poder encontrar las herramientas que uso y los proyectos en los que participo.",
+                "p2": "Brindo valor a la empresa para la que trabajo: me ocupo de entender el dominio, modelar, documentar, analizar alternativas con mis pares, implementar, y realizar pruebas automatizadas. Esto ahorra tiempo y recursos tanto a la empresa como a mí mismo. ",
+                "p3": "Compartir ideas me es importante, por eso considero que un trabajo basado en el intercambio de opiniones nos hace bien a todos. Trabajar con otras personas me permite aprender de ellos y mejorar.",
+                "p4": "Estoy aprendiendo de a poco front-end, y esta página es una excusa para seguir practicando. No contiene ningún framework porque me propuse aprender lo fundamental de CSS y mantenerme flexible. Si querés ver cómo está hecho, te invito a pasar por ",
                 "alert-responsive": "Este sitio es responsive. ¡Abrilo donde quieras!",
                 "hey": "Hola!",
-                "repo":"mi repositorio."
+                "repo":"mi repositorio.",
+                "tools":"Herramientas:",
+                "student": "Estudiante de Ingeniería en Sistemas de Información en la UTN",
+                "design-patterns": "Patrones de Diseño",
+                "lambda-ex": "Expresiones Lambda",
+                "padaigms": "Paradigmas",
+                "class-diagram": "Diagrama de Clases",
+                "sequence-diagram": "Diagrama de Secuencia",
+                "er-diagram": "Diagrama de Entidad Relación",
+                "use-case-diagram": "Diagrama de Casos de Uso",
+                "oop":"Orientado a Objectos",
+                "func":"Funcional",
+                "imperative":"Imperativo",
+                "logic":"Lógico"
             }
         }
     }
