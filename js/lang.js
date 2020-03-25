@@ -64,7 +64,7 @@ const translations = {
                 "student": "Estudiante de Ingeniería en Sistemas de Información en la UTN",
                 "design-patterns": "Patrones de Diseño",
                 "lambda-ex": "Expresiones Lambda",
-                "padaigms": "Paradigmas",
+                "paradigms": "Paradigmas",
                 "class-diagram": "Diagrama de Clases",
                 "sequence-diagram": "Diagrama de Secuencia",
                 "er-diagram": "Diagrama de Entidad Relación",

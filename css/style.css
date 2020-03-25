@@ -6,6 +6,7 @@
     --bg-primary: #23232e;
     --bg-secondary: #141418;
     --transition-speed: 600ms;
+    --hover-marine: #00CED1;
 }
 
 main {
@@ -92,7 +93,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 .fa-primary {
-    color:#00CED1;
+    color: var(--hover-marine);
     transition: var(--transition-speed);
 }
 
@@ -218,7 +219,7 @@ a.cv-button:hover{
 }
 
 .down-button:hover{
-    color: #00CED1;
+    color: var(--hover-marine);
     cursor: pointer;
 }
 
@@ -320,13 +321,15 @@ main h1 {
 
 .subt {
     text-decoration: underline;
+    display: inline;
 }
 
 .collapser {
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type:none;
-    align-items: center;
-    flex-direction: row;
-    padding: 0px;
+    padding-right: 1rem;
+    transition: all 200ms ease;
+}
+
+.collapser:hover {
+    cursor: pointer;
+    color: var(--hover-marine);
 }

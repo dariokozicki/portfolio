@@ -10,6 +10,7 @@
 		<script defer src="js/theme.js"></script>
 		<script defer src="js/anchor.js"></script>
 		<script defer src="js/lang.js"></script>
+		<script defer src="js/collapse.js"></script>
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/media-queries.css">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" 
@@ -89,24 +90,26 @@
 			<p id="p1"></p>
 			<p id="p2"></p>
 			<p id="p3"></p>
-			<ul>
+			<i id="coll-button" onclick="toggleCollapse('coll','coll-button')" class="fas fa-angle-down fa-lg collapser"></i>
+			<h3 id="tools" class="subt"></h3> 
+			<ul id="coll" style="list-style-type:none;">
 				<li>
-					<h3 id="tools" class="subt" style="display: inline;"></h3>
+					<h4 id="student"></h4>
 				</li>
 				<li>
-					<ul>
-						<li><h4 id="student"></h4></li>
-						<h3 class="subt">Backend</h3>
+					<h4>Backend</h4>
+					<ul style="list-style-type:none;">
 						<li>
-							<h4>Java</h5>
-							<ul>	
-								<li>Spring</li>
-								<li>Spark</li>
-								<li>Hibernate</li>
-								<li>Gson</li>
-								<li>Handlebars</li>
-								<li>JDBC</li>
-								<li>Java 8</li>
+							<i id="coll-button-java" onclick="toggleCollapse('coll-java','coll-button-java')" class="fas fa-angle-down fa-lg collapser"></i>
+							<h4 class="subt">Java</h4>
+							<ul id="coll-java" style="list-style-type:none;">	
+								<li><h5>Spring</h5></li>
+								<li><h5>Spark</h5></li>
+								<li><h5>Hibernate</h5></li>
+								<li><h5>Gson</h5></li>
+								<li><h5>Handlebars</h5></li>
+								<li><h5>JDBC</h5></li>
+								<li><h5>Java 8</h5></li>
 							</ul>
 						</li>
 						<li>
@@ -129,44 +132,45 @@
 						</li>
 						<li>
 							<h4>SQL, PL-SQL & T-SQL</h4>
-							<ul id="paradigms">
-								<li id="oop"></li>
-								<li id="func"></li>
-								<li id="imperative"></li>
-								<li id="logic"></li>
+						</li>
+						<li>
+							<i id="coll-button-pd" onclick="toggleCollapse('coll-paradigms','coll-button-pd')" class="fas fa-angle-down fa-lg collapser"></i>
+							<h4 id="paradigms" class="subt"></h4>
+							<ul id="coll-paradigms" style="list-style-type:none;">
+								<li><h5 id="oop"></h5></li>
+								<li><h5 id="func"></h5></li>
+								<li><h5 id="imperative"></h5></li>
+								<li><h5 id="logic"></h5></li>
 							</ul>
 						</li>
 						<li>
 							<h4>UML</h4>
-							<ul>
-								<li id="class-diagram"></li>
-								<li id="use-case-diagram"></li>
-								<li id="er-diagram"></li>
-								<li id="sequence-diagram""></li>
-							</ul>
 						</li>
 						<li>
 							<h4>C/C++</h4>
 						</li>
 					</ul>
-					<h3 class="subt">Frontend</h3>
-					<li>
-						<h4>HTML5</h4>
-					</li>
-					<li>
-						<h4>CSS</h4>
-					</li>
-					<li>
-						<h4>Javascript</h4>
-						<ul>
-							<li>jQuery</li>
-							<li>FontAwesome</li>
-							<li>i18next</li>
-							<li>Handlebars</li>
-						</ul>
-					</li>
+				</li>
+				<li>
+					<i id="coll-button-fd" onclick="toggleCollapse('coll-fd','coll-button-fd')" class="fas fa-angle-down fa-lg collapser"></i>
+					<h4 class="subt">Frontend</h4>
+					<ul id="coll-fd" style="list-style-type:none;">
+						<li><h4>HTML5</h4></li>
+						<li><h4>CSS</h4></li>
+						<li>
+							<i id="coll-button-js" onclick="toggleCollapse('coll-js','coll-button-js')" class="fas fa-angle-down fa-lg collapser"></i>
+							<h4 class="subt">Javascript</h4>
+							<ul id="coll-js" style="list-style-type:none;">
+								<li><h4>jQuery</h4></li>
+								<li><h4>FontAwesome</h4></li>
+								<li><h4>i18next</h4></li>
+								<li><h4>Handlebars</h4></li>
+							</ul>
+						</li>
+					</ul>
 				</li>
 			</ul>
+			<br/><br/>
 			<span id="p4"></span>	
 			<a href="https://github.com/dariokozicki/portfolio" id="repo"></a>
 			<br/><br/>		
