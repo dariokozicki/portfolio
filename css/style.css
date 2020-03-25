@@ -346,10 +346,27 @@ main h1 {
     bottom: 0;
     left: 0;
     top: 10px;
-    height: 8rem;
+    height: 9.5rem;
     padding: 0;
     margin-left: 5rem;
-    background-color: black;
-    color: white;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
     text-align: center;
+}
+
+.footer>div {
+    display: table;
+    margin: 0 auto;
+}
+
+.footer>div>ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: justify;
+    margin: 0;
+    padding-bottom: 1rem;
+}
+
+.footer>div>ul li a {
+    color: var(--text-secondary);
 }
