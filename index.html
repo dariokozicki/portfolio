@@ -1,204 +1,251 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8">
-		<link rel="icon" href="images/favicon.png">
-		<script src="https://kit.fontawesome.com/c018f6ab26.js"
-		 crossorigin="anonymous"></script>
-		<script src="https://unpkg.com/i18next/i18next.js"></script>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script defer src="js/theme.js"></script>
-		<script defer src="js/anchor.js"></script>
-		<script defer src="js/lang.js"></script>
-		<script defer src="js/collapse.js"></script>
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="css/media-queries.css">
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" 
-		rel="stylesheet">
-		<title id="personal-portfolio"></title>
-	</head>
-	<body>
-		<div class="header-image" id="home"></div>
-		<div class="header-text">
-			<h1 id="dario"></h1>
-			<h2>
-				<span id="fullstack-dev"></span>
-				<span id="design" class="is-this-for-ants"></span>
-				<span id="solutions" class="is-this-for-ants"></span>
-			</h2>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" href="images/favicon.png">
+	<script src="https://kit.fontawesome.com/c018f6ab26.js" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/i18next/i18next.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script defer src="js/theme.js"></script>
+	<script defer src="js/anchor.js"></script>
+	<script defer src="js/lang.js"></script>
+	<script defer src="js/collapse.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/media-queries.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+	<title id="personal-portfolio"></title>
+</head>
+
+<body>
+	<div class="header-image" id="home"></div>
+	<div class="header-text">
+		<h1 id="dario"></h1>
+		<h2>
+			<span id="fullstack-dev"></span>
+			<span id="design" class="is-this-for-ants"></span>
+			<span id="solutions" class="is-this-for-ants"></span>
+		</h2>
+	</div>
+	<a href="#about-title">
+		<i class="fas fa-chevron-down fa-3x down-button"></i>
+	</a>
+	<nav class="navbar">
+		<ul class="navbar-nav">
+			<li class="logo">
+				<a href="#home" class="nav-link">
+					<span class="link-text">PORTFOLIO</span>
+					<i class="fas fa-angle-double-right fa-2x fa-primary"></i>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="#home" class="nav-link">
+					<i class="fas fa-home fa-2x fa-primary"></i>
+					<span>&nbsp&nbsp</span><span class="link-text" id="start"></span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="#about-title" class="nav-link">
+					<i class="fas fa-user-circle fa-2x fa-primary"></i>
+					<span>&nbsp&nbsp</span><span class="link-text" id="about-reference"></span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="#projects-title" class="nav-link">
+					<i class="fas fa-terminal fa-2x fa-primary"></i>
+					<span class="link-text" id="projects-reference"></span>
+				</a>
+			</li>
+			<li class="nav-item cv">
+				<a class="nav-link" href="./docs/CV-DarioKozicki-Extendido.pdf" download target="_blank">
+					<i class="fas fa-file-alt fa-2x fa-primary"></i>
+					<span>&nbsp&nbsp</span><span class="link-text" id="cv-text"></span>
+				</a>
+			</li>
+			<li class="nav-item" id="langButton">
+				<a class="nav-link">
+					<i class="fas fa-language fa-2x fa-primary"></i>
+					<span class="link-text" id="language"></span>
+				</a>
+			</li>
+			<li class="nav-item" id="themeButton">
+				<a class="nav-link">
+					<i id=lightIcon class="fas fa-lightbulb fa-2x fa-primary theme-icon"></i>
+					<i id=darkIcon class="fas fa-moon fa-2x fa-primary theme-icon"></i>
+					<span class="link-text">
+						<span id="light-mode"></span>
+						<span id="dark-mode"></span>
+					</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<main>
+		<div class="alert" onclick="this.style.display='none';">
+			<span id="alert-responsive"></span>
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 		</div>
-		<a href="#about-title">
-		  <i class="fas fa-chevron-down fa-3x down-button"></i>
+		<h1 id="about-title"></h1>
+		<h2 id="hey"></h2>
+		<p id="p1"></p>
+		<p id="p2"></p>
+		<p id="p3"></p>
+		<i id="coll-button" onclick="toggleCollapse('coll','coll-button')" class="fas fa-angle-down fa-lg collapser"></i>
+		<h3 id="tools" class="subt"></h3>
+		<ul id="coll" style="list-style-type:none;">
+			<li>
+				<h4 id="student"></h4>
+			</li>
+			<li>
+				<i id="coll-button-backend" onclick="toggleCollapse('coll-backend','coll-button-backend')"
+					class="fas fa-angle-down fa-lg collapser"></i>
+				<h4 class="subt">Backend</h4><br /><br />
+				<ul id="coll-backend" style="list-style-type:none;">
+					<li>
+						<i id="coll-button-java" onclick="toggleCollapse('coll-java','coll-button-java')"
+							class="fas fa-angle-down fa-lg collapser"></i>
+						<h4 class="subt">Java</h4>
+						<ul id="coll-java" style="list-style-type:none;">
+							<li>
+								<h5>Spring</h5>
+							</li>
+							<li>
+								<h5>Spark</h5>
+							</li>
+							<li>
+								<h5>Hibernate</h5>
+							</li>
+							<li>
+								<h5>Gson</h5>
+							</li>
+							<li>
+								<h5>Handlebars</h5>
+							</li>
+							<li>
+								<h5>JDBC</h5>
+							</li>
+							<li>
+								<h5>Java 8</h5>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<h4>Postman/JMeter</h4>
+					</li>
+					<li>
+						<h4 id="design-patterns"></h4>
+					</li>
+					<li>
+						<h4>SOLID</h4>
+					</li>
+					<li>
+						<h4>APIs REST</h4>
+					</li>
+					<li>
+						<h4>SOAP</h4>
+					</li>
+					<li>
+						<h4 id="lambda-ex"></h4>
+					</li>
+					<li>
+						<h4>VirtualVM</h4>
+					</li>
+					<li>
+						<h4>SQL, PL-SQL & T-SQL</h4>
+					</li>
+					<li>
+						<i id="coll-button-pd" onclick="toggleCollapse('coll-paradigms','coll-button-pd')"
+							class="fas fa-angle-down fa-lg collapser"></i>
+						<h4 id="paradigms" class="subt"></h4>
+						<ul id="coll-paradigms" style="list-style-type:none;">
+							<li>
+								<h5 id="oop"></h5>
+							</li>
+							<li>
+								<h5 id="func"></h5>
+							</li>
+							<li>
+								<h5 id="imperative"></h5>
+							</li>
+							<li>
+								<h5 id="logic"></h5>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<h4>UML</h4>
+					</li>
+					<li>
+						<h4>C/C++</h4>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<i id="coll-button-fd" onclick="toggleCollapse('coll-fd','coll-button-fd')"
+					class="fas fa-angle-down fa-lg collapser"></i>
+				<h4 class="subt">Frontend</h4>
+				<ul id="coll-fd" style="list-style-type:none;">
+					<li>
+						<h4>HTML5</h4>
+					</li>
+					<li>
+						<h4>CSS</h4>
+					</li>
+					<li>
+						<i id="coll-button-js" onclick="toggleCollapse('coll-js','coll-button-js')"
+							class="fas fa-angle-down fa-lg collapser"></i>
+						<h4 class="subt">Javascript</h4>
+						<ul id="coll-js" style="list-style-type:none;">
+							<li>
+								<h4>jQuery</h4>
+							</li>
+							<li>
+								<h4>FontAwesome</h4>
+							</li>
+							<li>
+								<h4>i18next</h4>
+							</li>
+							<li>
+								<h4>Handlebars</h4>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<br /><br />
+		<span id="p4"></span>
+		<a href="https://github.com/dariokozicki/portfolio" id="repo"></a>
+		<br /><br />
+		<a href="./docs/CV-DarioKozicki-Extendido.pdf" download target="_blank" class="cv-button">
+			<i class="fas fa-cloud-download-alt fa-2x"></i><span>&nbsp&nbsp&nbsp</span>
+			<h3 style="display: inline;">Curriculum Vitae</h1>
 		</a>
-		<nav class="navbar">
-			<ul class="navbar-nav">
-				<li class="logo">
-					<a href="#home" class="nav-link">
-						<span class="link-text">PORTFOLIO</span>
-						<i class="fas fa-angle-double-right fa-2x fa-primary"></i>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a href="#home" class="nav-link">
-						<i class="fas fa-home fa-2x fa-primary"></i>
-						<span>&nbsp&nbsp</span><span class="link-text" id="start"></span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a href="#about-title" class="nav-link">
-						<i class="fas fa-user-circle fa-2x fa-primary"></i>
-						<span>&nbsp&nbsp</span><span class="link-text" id="about-reference"></span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a href="#projects-title" class="nav-link">
-						<i class="fas fa-terminal fa-2x fa-primary"></i>
-						<span class="link-text" id="projects-reference"></span>
-					</a>
-				</li>
-				<li class="nav-item cv">
-					<a class="nav-link" href="./docs/CV-DarioKozicki-Extendido.pdf" download target="_blank">
-						<i class="fas fa-file-alt fa-2x fa-primary"></i>
-						<span>&nbsp&nbsp</span><span class="link-text" id="cv-text"></span>
-					</a>
-				</li>
-				<li class="nav-item" id="langButton">
-					<a class="nav-link">
-						<i class="fas fa-language fa-2x fa-primary"></i>
-						<span class="link-text" id="language"></span>
-					</a>
-				</li>
-				<li class="nav-item" id="themeButton">
-					<a class="nav-link">
-						<i id=lightIcon class="fas fa-lightbulb fa-2x fa-primary theme-icon"></i>
-						<i id=darkIcon class="fas fa-moon fa-2x fa-primary theme-icon"></i>
-						<span class="link-text">
-							<span id="light-mode"></span>
-							<span id="dark-mode"></span>
-						</span>
-					</a>
-				</li>
-			</ul>
-		</nav>
-		<main>
-			<div class="alert" onclick="this.style.display='none';">
-				<span id="alert-responsive"></span>
-				<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-			</div> 
-			<h1 id="about-title"></h1>
-			<h2 id="hey"></h2>
-			<p id="p1"></p>
-			<p id="p2"></p>
-			<p id="p3"></p>
-			<i id="coll-button" onclick="toggleCollapse('coll','coll-button')" class="fas fa-angle-down fa-lg collapser"></i>
-			<h3 id="tools" class="subt"></h3> 
-			<ul id="coll" style="list-style-type:none;">
-				<li>
-					<h4 id="student"></h4>
-				</li>
-				<li>
-					<i id="coll-button-backend" onclick="toggleCollapse('coll-backend','coll-button-backend')" class="fas fa-angle-down fa-lg collapser"></i>
-					<h4 class="subt">Backend</h4><br/><br/>
-					<ul id="coll-backend" style="list-style-type:none;">
-						<li>
-							<i id="coll-button-java" onclick="toggleCollapse('coll-java','coll-button-java')" class="fas fa-angle-down fa-lg collapser"></i>
-							<h4 class="subt">Java</h4>
-							<ul id="coll-java" style="list-style-type:none;">	
-								<li><h5>Spring</h5></li>
-								<li><h5>Spark</h5></li>
-								<li><h5>Hibernate</h5></li>
-								<li><h5>Gson</h5></li>
-								<li><h5>Handlebars</h5></li>
-								<li><h5>JDBC</h5></li>
-								<li><h5>Java 8</h5></li>
-							</ul>
-						</li>
-						<li>
-							<h4>Postman/JMeter</h4>
-						</li>
-						<li>
-							<h4 id="design-patterns"></h4>
-						</li>
-						<li>
-							<h4>APIs REST</h4>
-						</li>
-						<li>
-							<h4>SOAP</h4>
-						</li>
-						<li>
-							<h4 id="lambda-ex"></h4>
-						</li>
-						<li>
-							<h4>VirtualVM</h4>
-						</li>
-						<li>
-							<h4>SQL, PL-SQL & T-SQL</h4>
-						</li>
-						<li>
-							<i id="coll-button-pd" onclick="toggleCollapse('coll-paradigms','coll-button-pd')" class="fas fa-angle-down fa-lg collapser"></i>
-							<h4 id="paradigms" class="subt"></h4>
-							<ul id="coll-paradigms" style="list-style-type:none;">
-								<li><h5 id="oop"></h5></li>
-								<li><h5 id="func"></h5></li>
-								<li><h5 id="imperative"></h5></li>
-								<li><h5 id="logic"></h5></li>
-							</ul>
-						</li>
-						<li>
-							<h4>UML</h4>
-						</li>
-						<li>
-							<h4>C/C++</h4>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<i id="coll-button-fd" onclick="toggleCollapse('coll-fd','coll-button-fd')" class="fas fa-angle-down fa-lg collapser"></i>
-					<h4 class="subt">Frontend</h4>
-					<ul id="coll-fd" style="list-style-type:none;">
-						<li><h4>HTML5</h4></li>
-						<li><h4>CSS</h4></li>
-						<li>
-							<i id="coll-button-js" onclick="toggleCollapse('coll-js','coll-button-js')" class="fas fa-angle-down fa-lg collapser"></i>
-							<h4 class="subt">Javascript</h4>
-							<ul id="coll-js" style="list-style-type:none;">
-								<li><h4>jQuery</h4></li>
-								<li><h4>FontAwesome</h4></li>
-								<li><h4>i18next</h4></li>
-								<li><h4>Handlebars</h4></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-			</ul>
-			<br/><br/>
-			<span id="p4"></span>	
-			<a href="https://github.com/dariokozicki/portfolio" id="repo"></a>
-			<br/><br/>		
-			<a href="./docs/CV-DarioKozicki-Extendido.pdf" download target="_blank" class="cv-button">
-				<i class="fas fa-cloud-download-alt fa-2x"></i><span>&nbsp&nbsp&nbsp</span><h3 style="display: inline;">Curriculum Vitae</h1>
-			</a>
-			<h1 id="projects-title"></h1>
-			<ul class="project-list">
-				<li class=project-item>
-					<a href="#" style="text-decoration: none;">
-						<img class="project-img" src="https://www.webdevelopersnotes.com/wp-content/uploads/create-a-simple-home-page.png">
-						<h3>Proyecto 1</h3>
-					</a>
-				</li>
-				<li class="project-item">
-					<a href="#" style="text-decoration: none;">
-						<img class="project-img" src="https://www.webdevelopersnotes.com/wp-content/uploads/create-a-simple-home-page.png">
-						<h3>Proyecto 2</h3>
-					</a>
-				</li>
-				<li class="project-item">
-					<a href="#" style="text-decoration: none;">
-						<img class="project-img" src="https://www.webdevelopersnotes.com/wp-content/uploads/create-a-simple-home-page.png">
-						<h3>Proyecto 3</h3>
-					</a>
-				</li>
-			</ul>
-		</main>
-	</body>
+		<h1 id="projects-title"></h1>
+		<ul class="project-list">
+			<li class=project-item>
+				<a href="#" style="text-decoration: none;">
+					<img class="project-img"
+						src="https://www.webdevelopersnotes.com/wp-content/uploads/create-a-simple-home-page.png">
+					<h3>Proyecto 1</h3>
+				</a>
+			</li>
+			<li class="project-item">
+				<a href="#" style="text-decoration: none;">
+					<img class="project-img"
+						src="https://www.webdevelopersnotes.com/wp-content/uploads/create-a-simple-home-page.png">
+					<h3>Proyecto 2</h3>
+				</a>
+			</li>
+			<li class="project-item">
+				<a href="#" style="text-decoration: none;">
+					<img class="project-img"
+						src="https://www.webdevelopersnotes.com/wp-content/uploads/create-a-simple-home-page.png">
+					<h3>Proyecto 3</h3>
+				</a>
+			</li>
+		</ul>
+	</main>
+</body>
+
 </html>

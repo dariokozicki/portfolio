@@ -1,8 +1,8 @@
 
-function toggleCollapse(idOfCollapsed, idOfbutton){
+function toggleCollapse(idOfCollapsed, idOfbutton) {
     let collapserClass = document.getElementById(idOfCollapsed).classList;
     let button = document.getElementById(idOfbutton).classList;
-    if (collapserClass.contains("hidden")){
+    if (collapserClass.contains("hidden")) {
         collapserClass.remove("hidden")
         button.remove("fa-angle-right");
     } else {
