@@ -12,6 +12,7 @@
 main {
     margin-left: 5rem;
     padding: 1rem;
+    padding-top: 64px;
 }
 
 body {
@@ -22,17 +23,16 @@ body {
     overflow-x: hidden;
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
     width: 0.5rem;
     overflow-x: hidden;
 }
 
-
-body::-webkit-scrollbar-track{
+body::-webkit-scrollbar-track {
     background: var(--scrollbar-track);
 }
 
-body::-webkit-scrollbar-thumb{
+body::-webkit-scrollbar-thumb {
     background: var(--scrollbar-thumb);
 }
 
@@ -78,13 +78,17 @@ body::-webkit-scrollbar-thumb{
     cursor: pointer;
 }
 
-.link-text{
+.link-text {
     display: none;
     margin-left: 1rem;
-    -webkit-user-select: none; /* Safari */        
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
 }
 
 .nav-link i {
@@ -96,7 +100,6 @@ body::-webkit-scrollbar-thumb{
     color: var(--hover-marine);
     transition: var(--transition-speed);
 }
-
 
 .logo {
     font-weight: bold;
@@ -128,7 +131,7 @@ body::-webkit-scrollbar-thumb{
     --scrollbar-track: #23232e;
     --scrollbar-thumb: #D100CE;
 }
-  
+
 .light {
     --text-primary: #1f1f1f;
     --text-secondary: #000000;
@@ -137,7 +140,6 @@ body::-webkit-scrollbar-thumb{
     --scrollbar-track: #ffffff;
     --scrollbar-thumb: #cccccc;
 }
-
 
 .theme-icon {
     display: none;
@@ -163,9 +165,10 @@ body::-webkit-scrollbar-thumb{
     filter: blur(5px);
     z-index: 0;
 }
+
 .header-text {
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0, 0.6);
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
     font-weight: bold;
     border: 3px solid #f1f1f1;
@@ -183,27 +186,27 @@ body::-webkit-scrollbar-thumb{
 }
 
 a.cv-button {
-    display:inline-block;
-    padding:0.35em 1.2em;
-    border:0.1em solid #141418;
-    margin:0 0.3em 0.3em 0;
-    border-radius:0.12em;
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #141418;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
     box-sizing: border-box;
-    text-decoration:none;
-    font-weight:300;
-    text-align:center;
+    text-decoration: none;
+    font-weight: 300;
+    text-align: center;
     transition: all 0.2s;
-    color:var(--text-primary);
-    background-color:var(--bg-primary);
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
 }
 
-a.cv-button:hover{
+a.cv-button:hover {
     background-color: var(--bg-secondary);
     color: var(--text-secondary);
 }
 
 .down-button {
-    color: black;
+    color: var(--bg-secondary);
     font-weight: bold;
     position: absolute;
     top: 90%;
@@ -218,7 +221,7 @@ a.cv-button:hover{
     z-index: 1;
 }
 
-.down-button:hover{
+.down-button:hover {
     color: var(--hover-marine);
     cursor: pointer;
 }
@@ -231,19 +234,19 @@ main h1 {
     display: none;
 }
 
-.hidden{
-    display:none;
+.hidden {
+    display: none;
 }
 
 .project-list {
     display: flex;
     flex-wrap: wrap;
-    list-style-type:none;
+    list-style-type: none;
     align-items: center;
     flex-direction: row;
     padding: 0px;
 }
-  
+
 .project-item {
     width: auto;
     flex-grow: 1;
@@ -254,7 +257,7 @@ main h1 {
 }
 
 .project-item h3 {
-    transform: translate(0rem,-2.7rem);
+    transform: translate(0rem, -2.7rem);
     z-index: 3;
     color: var(--text-primary);
     background-color: var(--bg-primary);
@@ -262,7 +265,7 @@ main h1 {
     text-align: center;
     text-decoration: none;
 }
-  
+
 .project-img {
     max-height: 100%;
     min-width: 100%;
@@ -271,7 +274,7 @@ main h1 {
     transition: 200ms ease;
 }
 
-.project-img:hover + h3 {
+.project-img:hover+h3 {
     color: var(--text-secondary);
     background-color: var(--bg-secondary);
 }
@@ -283,7 +286,8 @@ main h1 {
 
 .alert {
     padding: 10px;
-    background-color: #2196F3; /* Red */
+    background-color: #2196F3;
+    /* Red */
     color: white;
     margin-bottom: 15px;
     position: fixed;
@@ -313,8 +317,8 @@ main h1 {
     line-height: 10px;
     cursor: pointer;
     transition: 0.3s;
-  }
-  
+}
+
 .closebtn:hover {
     color: black;
 }
@@ -332,4 +336,22 @@ main h1 {
 .collapser:hover {
     cursor: pointer;
     color: var(--hover-marine);
+}
+
+.footer {
+    position: absolute;
+    margin: 0px;
+    border: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: 10px;
+    height: 11rem;
+    padding: 0;
+    background-color: black;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }

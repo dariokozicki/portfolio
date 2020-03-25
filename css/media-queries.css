@@ -1,94 +1,83 @@
 /* Small screens only */
-@media only screen and (max-width: 600px) {
-    a.cv-button{
-        display:block;
-        margin:0.4em auto;
-    }
 
+@media only screen and (max-width: 600px) {
+    a.cv-button {
+        display: block;
+        margin: 0.4em auto;
+    }
     .navbar {
         bottom: 0;
         width: 100vw;
-        height: 5rem; 
+        height: 5rem;
     }
-
     .logo {
         display: none;
     }
-
     .navbar-nav {
         flex-direction: row;
     }
-
     .nav-link {
         justify-content: center;
         width: 4rem;
     }
-
     main {
         margin-left: 0;
-        margin-bottom: 5rem;
     }
-
     .down-button {
         margin-left: 0rem;
     }
-
-    .header-text{
+    .header-text {
         margin-left: 0rem;
     }
-
     .cv {
         display: none;
     }
-
     .project-list {
         flex-direction: column;
     }
-
     .project-item {
         height: 20vh;
+    }
+    .footer {
+        padding-bottom: 8rem;
+        height: 8rem;
     }
 }
 
 /* Large screens only */
+
 @media only screen and (min-width: 600px) {
     .navbar {
-        top: 0;    
+        top: 0;
         width: 5rem;
         height: 100vh;
     }
-
     .navbar:hover {
         width: 16rem;
     }
-
     .navbar:hover .link-text {
         display: inline;
         transition: opacity var(--transition-speed);
     }
-
     .navbar:hover .logo-text {
         left: 0px;
     }
-
     .header-text {
         margin-left: 3rem;
     }
-
     .down-button {
         margin-left: 3rem;
     }
-
     a.cv-button {
-        display:none;
+        display: none;
     }
-    
-    .is-this-for-ants{
+    .is-this-for-ants {
         display: inline;
     }
-
     .project-item {
         height: 40vh;
     }
-
+    .footer ul {
+        margin-left: auto;
+    }
 }
