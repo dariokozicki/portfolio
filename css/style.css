@@ -130,7 +130,7 @@ body::-webkit-scrollbar-thumb {
     --bg-primary: #23232e;
     --bg-secondary: #141418;
     --scrollbar-track: #23232e;
-    --scrollbar-thumb: #D100CE;
+    --scrollbar-thumb: var(--hover-marine);
     --border-primary: #141418;
 }
 
@@ -380,7 +380,7 @@ main h1 {
 .footer>div>ul li a {
     color: var(--text-primary);
     text-decoration: none;
-    transition: all 200ms ease;
+    transition: all 300ms ease;
     -webkit-touch-callout: none;
     /* iOS Safari */
     -webkit-user-select: none;
@@ -394,7 +394,7 @@ main h1 {
 }
 
 .footer>div>ul li a:hover {
-    color: var(--text-secondary);
+    color: var(--hover-marine);
 }
 
 .emphasis {
