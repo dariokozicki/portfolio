@@ -44,7 +44,14 @@ const translations = {
                 "oop": "Object Oriented",
                 "func": "Functional",
                 "imperative": "Imperative",
-                "logic": "Logical"
+                "logic": "Logical",
+                "studies": "Studies",
+                "backend": "Backend",
+                "frontend": "Frontend",
+                "bachiller": "High School Diploma in Computer Science",
+                "codoacodo": "'Codo a Codo' Java certificate",
+                "uml-complete": "UML (Class, Use Case, ER, and Sequence diagrams)",
+                "paradigms-complete": "Paradigms (Object Oriented, Functional, Imperative, Logical)"
             }
         },
         es: {
@@ -83,7 +90,14 @@ const translations = {
                 "func": "Funcional",
                 "imperative": "Imperativo",
                 "logic": "Lógico",
-                "contact": "CONTACTO"
+                "contact": "CONTACTO",
+                "studies": "Estudios",
+                "backend": "Backend",
+                "frontend": "Frontend",
+                "bachiller": "Bachiller en Informática",
+                "codoacodo": "Certificado Java anual 'Codo a Codo'",
+                "uml-complete": "UML (Diagrama de Clases, Casos de Uso, Entidad Relación, Secuencia)",
+                "paradigms-complete": "Paradigmas (Orientado a Objetos, Funcional, Imperativo, Lógico)"
             }
         }
     }

@@ -39,7 +39,7 @@
 	<a href="#about-title">
 		<i class="fas fa-chevron-down fa-3x down-button"></i>
 	</a>
-	<nav class="navbar">
+	<nav id="thenavbar" class="navbar">
 		<ul class="navbar-nav">
 			<li class="logo">
 				<a href="#home" class="nav-link">
@@ -49,38 +49,38 @@
 			</li>
 			<li class="nav-item">
 				<a href="#home" class="nav-link">
-					<i class="fas fa-home fa-2x fa-primary"></i>
+					<i class="fas fa-home fa-primary fa-2x"></i>
 					<span>&nbsp&nbsp</span><span class="link-text" id="start"></span>
 				</a>
 			</li>
 			<li class="nav-item">
 				<a href="#about-title" class="nav-link">
-					<i class="fas fa-user-circle fa-2x fa-primary"></i>
+					<i class="fas fa-user-circle fa-primary fa-2x"></i>
 					<span>&nbsp&nbsp</span><span class="link-text" id="about-reference"></span>
 				</a>
 			</li>
 			<li class="nav-item">
 				<a href="#projects-title" class="nav-link">
-					<i class="fas fa-terminal fa-2x fa-primary"></i>
+					<i class="fas fa-terminal fa-primary fa-2x"></i>
 					<span class="link-text" id="projects-reference"></span>
 				</a>
 			</li>
 			<li class="nav-item cv">
 				<a class="nav-link" href="./docs/CV-DarioKozicki.pdf" download target="_blank">
-					<i class="fas fa-file-alt fa-2x fa-primary"></i>
+					<i class="fas fa-file-alt fa-primary fa-2x"></i>
 					<span>&nbsp&nbsp</span><span class="link-text" id="cv-text"></span>
 				</a>
 			</li>
 			<li class="nav-item" id="langButton">
 				<a class="nav-link">
-					<i class="fas fa-language fa-2x fa-primary"></i>
+					<i class="fas fa-language fa-primary fa-2x"></i>
 					<span class="link-text" id="language"></span>
 				</a>
 			</li>
 			<li class="nav-item" id="themeButton">
 				<a class="nav-link">
-					<i id=lightIcon class="fas fa-lightbulb fa-2x fa-primary theme-icon"></i>
-					<i id=darkIcon class="fas fa-moon fa-2x fa-primary theme-icon"></i>
+					<i id=lightIcon class="fas fa-lightbulb fa-primary theme-icon fa-2x"></i>
+					<i id=darkIcon class="fas fa-moon fa-primary theme-icon fa-2x"></i>
 					<span class="link-text">
 						<span id="light-mode"></span>
 						<span id="dark-mode"></span>
@@ -98,150 +98,42 @@
 		<h2 id="hey"></h2>
 		<p id="p1"></p>
 		<p id="p2"></p>
-		<p id="p3"></p>
-		<i id="coll-button" onclick="toggleCollapse('coll','coll-button')" class="fas fa-angle-down fa-lg collapser"></i>
-		<h3 id="tools" class="subt"></h3>
-		<ul id="coll" style="list-style-type:none;">
-			<li>
-				<h4 id="student"></h4>
-			</li>
-			<li>
-				<i id="coll-button-backend" onclick="toggleCollapse('coll-backend','coll-button-backend')"
-					class="fas fa-angle-down fa-lg collapser"></i>
-				<h4 class="subt">Backend</h4><br /><br />
-				<ul id="coll-backend" style="list-style-type:none;">
-					<li>
-						<i id="coll-button-java" onclick="toggleCollapse('coll-java','coll-button-java')"
-							class="fas fa-angle-down fa-lg collapser"></i>
-						<h4 class="subt">Java</h4>
-						<ul id="coll-java" style="list-style-type:none;">
-							<li>
-								<h5>Spring</h5>
-							</li>
-							<li>
-								<h5>Spark</h5>
-							</li>
-							<li>
-								<h5>Hibernate</h5>
-							</li>
-							<li>
-								<h5>Gson</h5>
-							</li>
-							<li>
-								<h5>Handlebars</h5>
-							</li>
-							<li>
-								<h5>JDBC</h5>
-							</li>
-							<li>
-								<h5>Java 8</h5>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<h4>Postman/JMeter</h4>
-					</li>
-					<li>
-						<h4 id="design-patterns"></h4>
-					</li>
-					<li>
-						<h4>SOLID</h4>
-					</li>
-					<li>
-						<h4>APIs REST</h4>
-					</li>
-					<li>
-						<h4>SOAP</h4>
-					</li>
-					<li>
-						<h4 id="lambda-ex"></h4>
-					</li>
-					<li>
-						<h4>VirtualVM</h4>
-					</li>
-					<li>
-						<h4>SQL, PL-SQL & T-SQL</h4>
-					</li>
-					<li style="margin-bottom: 1rem;">
-						<i id="coll-button-pd" onclick="toggleCollapse('coll-paradigms','coll-button-pd')"
-							class="fas fa-angle-down fa-lg collapser"></i>
-						<h4 id="paradigms" class="subt"></h4>
-						<ul id="coll-paradigms" style="list-style-type:none;">
-							<li>
-								<h5 id="oop"></h5>
-							</li>
-							<li>
-								<h5 id="func"></h5>
-							</li>
-							<li>
-								<h5 id="imperative"></h5>
-							</li>
-							<li>
-								<h5 id="logic"></h5>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<i id="coll-button-uml" onclick="toggleCollapse('coll-uml','coll-button-uml')"
-							class="fas fa-angle-down fa-lg collapser"></i>
-						<h4 class="subt">UML</h4>
-						<ul id="coll-uml" style="list-style-type:none;">
-							<li>
-								<h5 id="class-diagram"></h5>
-							</li>
-							<li>
-								<h5 id="er-diagram"></h5>
-							</li>
-							<li>
-								<h5 id="use-case-diagram"></h5>
-							</li>
-							<li>
-								<h5 id="sequence-diagram"></h5>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<h4>C/C++</h4>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<i id="coll-button-fd" onclick="toggleCollapse('coll-fd','coll-button-fd')"
-					class="fas fa-angle-down fa-lg collapser"></i>
-				<h4 class="subt">Frontend</h4>
-				<ul id="coll-fd" style="list-style-type:none;">
-					<li>
-						<h4>HTML5</h4>
-					</li>
-					<li>
-						<h4>CSS</h4>
-					</li>
-					<li>
-						<i id="coll-button-js" onclick="toggleCollapse('coll-js','coll-button-js')"
-							class="fas fa-angle-down fa-lg collapser"></i>
-						<h4 class="subt">Javascript</h4>
-						<ul id="coll-js" style="list-style-type:none;">
-							<li>
-								<h4>jQuery</h4>
-							</li>
-							<li>
-								<h4>FontAwesome</h4>
-							</li>
-							<li>
-								<h4>i18next</h4>
-							</li>
-							<li>
-								<h4>Handlebars</h4>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-		</ul>
-		<br /><br />
-		<span id="p4"></span>
+		<p id="p3"></p><span id="p4"></span>
 		<a href="https://github.com/dariokozicki/portfolio" id="repo"></a>
 		<br /><br />
+		<div class=flex-skills>
+			<div class="card">
+				<div class="container">
+					<h4><b>Backend</b></h4>
+					<p>Java (Spring, Hibernate, Spark, Gson, JDBC)</p>
+					<p>Postman, JMeter, VirtualVM</p>
+					<p>APIs REST, SOAP, HTTP, TCP/IP, SOCKETS</p>
+					<p>SQL, T-SQL, PL-SQL</p>
+					<p id="paradigms-complete"></p>
+					<p id="uml-complete"></p>
+					<p>SOLID, DRY</p>
+					<p id="design-patterns"></p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="container">
+					<h4><b>Frontend</b></h4>
+					<p>HTML5</p>
+					<p>CSS3</p>
+					<p>Javascript (jQuery, FontAwesome, uiKit, i18next, Handlebars)</p>
+					<p id="lambda-ex"></p>
+				</div>
+			</div>
+			<div class="card">
+				<div class="container">
+					<h4><b id="studies"></b></h4>
+					<p id="student"></p>
+					<p id="bachiller"></p>
+					<p id="codoacodo"></p>
+				</div>
+			</div>
+		</div>
+		<br />
 		<a href="./docs/CV-DarioKozicki.pdf" download target="_blank" class="cv-button">
 			<i class="fas fa-cloud-download-alt fa-2x"></i><span>&nbsp&nbsp&nbsp</span>
 			<h3 style="display: inline;">Curriculum Vitae</h1>

@@ -37,11 +37,21 @@
     }
     .project-item {
         height: 20vh;
+        width: 95%;
     }
     .footer {
         padding-bottom: 7rem;
         height: 6rem;
         margin-left: 0rem;
+    }
+    .skills {
+        flex-direction: column;
+    }
+    .flex-skills {
+        flex-direction: column;
+    }
+    .card {
+        width: 100%;
     }
 }
 
@@ -80,5 +90,12 @@
     }
     .footer ul {
         margin-left: auto;
+    }
+    .skills {
+        flex-direction: row;
+    }
+    .card {
+        width: 30%;
+        height: 100%;
     }
 }
