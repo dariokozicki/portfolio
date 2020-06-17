@@ -1,7 +1,7 @@
 # Portfolio personal
 
 
-![Uptime Robot status](https://img.shields.io/uptimerobot/status/m784608547-de92abbae8bcc7a40608dcb8) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m784608547-de92abbae8bcc7a40608dcb8) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) 
+![Uptime Robot status](https://img.shields.io/uptimerobot/status/m784608547-de92abbae8bcc7a40608dcb8) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) ![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m784608547-de92abbae8bcc7a40608dcb8) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![GitHub last commit](https://img.shields.io/github/last-commit/dariokozicki/portfolio)
 
 [Hacé click acá para verlo en tu navegador!](https://thekozicki.tk)
 
