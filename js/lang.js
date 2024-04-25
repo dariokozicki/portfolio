@@ -107,7 +107,7 @@ const translations = {
   },
 };
 
-// i18next.init(translations, updateContent);
+i18next.init(translations, updateContent);
 
 // document.getElementById('langButton').onclick = function () {
 //   const nextLang = getNextLanguage();
@@ -115,23 +115,23 @@ const translations = {
 //   i18next.changeLanguage(nextLang);
 // };
 
-// function getNextLanguage() {
-//   return langs[
-//     (langs.indexOf(localStorage.getItem('lang')) + 1) % langs.length
-//   ];
-// }
+function getNextLanguage() {
+  return langs[
+    (langs.indexOf(localStorage.getItem('lang')) + 1) % langs.length
+  ];
+}
 
-// i18next.on('languageChanged', () => {
-//   updateContent();
-// });
+i18next.on('languageChanged', () => {
+  updateContent();
+});
 
-// function updateContent() {
-//   Object.keys(translations.resources.es.translation).forEach((phrase) => {
-//     if (document.getElementById(phrase))
-//       document.getElementById(phrase).innerHTML = i18next.t(phrase);
-//     else
-//       console.warn(
-//         "'" + phrase + "' has no i18n defined in the current language!"
-//       );
-//   });
-// }
+function updateContent() {
+  Object.keys(translations.resources.es.translation).forEach((phrase) => {
+    if (document.getElementById(phrase))
+      document.getElementById(phrase).innerHTML = i18next.t(phrase);
+    else
+      console.warn(
+        "'" + phrase + "' has no i18n defined in the current language!"
+      );
+  });
+}
