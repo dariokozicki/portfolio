@@ -1,0 +1,65 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionLabel from '../components/SectionLabel.astro';
+import ArticleList from '../components/ArticleList.astro';
+import { selectedWork } from '../data/site';
+
+const articles = (await getCollection('writing', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+  .slice(0, 3);
+---
+<BaseLayout>
+  <div class="page-shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Senior software engineer · Buenos Aires</p>
+        <h1>I like understanding how complicated systems actually work.</h1>
+      </div>
+      <p class="hero-summary">
+        I’m a software engineer working across <strong>AWS infrastructure, backend systems, and legacy modernization.</strong>
+        I tend to follow a problem across boundaries until it makes sense.
+      </p>
+    </section>
+
+    <section id="work" class="home-section">
+      <SectionLabel label="Selected engineering work" meta="01—03" />
+      <div class="work-grid">
+        {selectedWork.map((item) => (
+          <article class="work-card">
+            <span class="work-index">{item.index} / {item.category}</span>
+            <div>
+              <h2>{item.title}</h2>
+              <p>{item.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="writing-preview home-section">
+      <div>
+        <p class="eyebrow">Writing</p>
+        <h2>Technical notes.</h2>
+      </div>
+      <div>
+        {articles.length > 0 ? <ArticleList articles={articles} /> : (
+          <div class="writing-empty">
+            <p>Nothing published yet.</p>
+            <p>I’m resisting the temptation to fill this section with articles I don’t have a reason to write.</p>
+          </div>
+        )}
+        <a class="text-link" href="/writing/">View writing <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="practice home-section">
+      <SectionLabel label="How I tend to work" />
+      <div class="practice-grid">
+        <div><h2>Understand the mechanism</h2><p>I’m rarely satisfied with “that’s how it works.” I want to know where the boundary came from and what happens when it fails.</p></div>
+        <div><h2>Build what is justified</h2><p>I like knowing what the ideal design looks like. I also like admitting when it is not worth building yet.</p></div>
+        <div><h2>Follow the consequences</h2><p>A technical decision changes cost, operations, product behavior, and how somebody debugs the system six months later.</p></div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

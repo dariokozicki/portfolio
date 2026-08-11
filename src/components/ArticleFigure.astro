@@ -1,0 +1,14 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  href?: string;
+}
+
+const { src, alt, caption, href } = Astro.props;
+---
+<figure class="article-figure">
+  {href ? <a href={href}><img src={src} alt={alt} loading="lazy" decoding="async" /></a> : <img src={src} alt={alt} loading="lazy" decoding="async" />}
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

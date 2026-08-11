@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props { articles: CollectionEntry<'writing'>[] }
+const { articles } = Astro.props;
+const formatter = new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' });
+---
+<div class="article-list">
+  {articles.map((article) => (
+    <a class="article-row" href={`/writing/${article.id}/`}>
+      <span>
+        <strong>{article.data.title}</strong>
+        <small>{article.data.description}</small>
+      </span>
+      <time datetime={article.data.publishedAt.toISOString()}>{formatter.format(article.data.publishedAt)}</time>
+    </a>
+  ))}
+</div>

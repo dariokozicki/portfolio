@@ -1,40 +1,21 @@
 {
-  "name": "portfolio-kozicki-dario",
-  "version": "1.0.0",
-  "description": "Dario Kozicki's Portfolio",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
+  "name": "kozicki-dev",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check"
   },
   "dependencies": {
-    "core-js": "^3.6.4"
-  },
-  "devDependencies": {
-    "commitizen": "^4.0.3",
-    "cz-conventional-changelog": "^3.1.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dariokozicki/portfolio.git"
-  },
-  "keywords": [
-    "portfolio",
-    "projects",
-    "dario",
-    "kozicki"
-  ],
-  "author": "Dario Kozicki",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/dariokozicki/portfolio/issues"
-  },
-  "homepage": "https://github.com/dariokozicki/portfolio#readme",
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^4.3.4",
+    "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.4.1",
+    "astro": "^5.13.2",
+    "sharp": "^0.34.3",
+    "typescript": "^5.9.2"
   }
 }

@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleList from '../../components/ArticleList.astro';
+
+const articles = (await getCollection('writing', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+---
+<BaseLayout title="Writing — Darío Kozicki" description="Notes on cloud infrastructure, distributed systems, software modernization, and engineering tradeoffs.">
+  <div class="page-shell interior-page">
+    <header class="page-intro">
+      <p class="eyebrow">Writing</p>
+      <h1>Technical notes.</h1>
+      <p>Investigations into AWS, backend systems, and software modernization—including the parts that did not work.</p>
+    </header>
+    {articles.length > 0 ? <ArticleList articles={articles} /> : (
+      <div class="empty-state">
+        <p class="eyebrow">Nothing published yet</p>
+        <h2>No articles yet.</h2>
+        <p>I’ll publish when I have something useful to say, rather than manufacture an opinion to keep the page busy.</p>
+      </div>
+    )}
+  </div>
+</BaseLayout>

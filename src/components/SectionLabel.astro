@@ -1,0 +1,5 @@
+---
+interface Props { label: string; meta?: string }
+const { label, meta } = Astro.props;
+---
+<div class="section-label"><span>{label}</span>{meta && <span>{meta}</span>}</div>

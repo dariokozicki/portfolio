@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+  ['Target MVD', 'https://github.com/dariokozicki/target-mvd'],
+  ['Free 2 Play', 'https://github.com/dariokozicki/client-free2play'],
+  ['Dragon Sunset', 'https://github.com/dariokozicki/DragonSunset'],
+  ['NFT Marketplace', 'https://github.com/dariokozicki/nft-marketplace'],
+  ['G.A.F. Metalúrgica', 'https://github.com/dariokozicki/gaf-metalurgica'],
+  ['Delibird', 'https://github.com/dariokozicki/SO-Delibird'],
+];
+---
+<BaseLayout title="Project archive — Darío Kozicki" description="Earlier projects and experiments by Darío Kozicki.">
+  <div class="page-shell interior-page">
+    <header class="page-intro">
+      <p class="eyebrow">Archive</p>
+      <h1>Earlier projects and experiments.</h1>
+      <p>These projects mark earlier stages of my career. They are preserved as a record of learning and building, rather than presented as current professional work.</p>
+    </header>
+    <div class="archive-list">
+      {projects.map(([name, url], index) => (
+        <a href={url}><span>{String(index + 1).padStart(2, '0')}</span><strong>{name}</strong><span aria-hidden="true">↗</span></a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
