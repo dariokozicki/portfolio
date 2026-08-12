@@ -14,6 +14,18 @@ draft: true
 
 Set `draft: false` when the article is ready. The site then adds it to the writing index, homepage, RSS feed, sitemap, and static build.
 
+## Images
+
+Keep unused image concepts in `assets/image-library/`. That folder is intentionally Git-ignored and never deployed.
+
+When you choose an image for an article, copy it into `src/content/writing/assets/` with a stable descriptive filename, then reference it from the article:
+
+```markdown
+![A concise description of the image.](./assets/my-article-cover.png)
+```
+
+Astro optimizes local article images at build time, while Obsidian can preview the same relative path. Only images placed in `src/content/writing/assets/` (or explicitly used from `public/`) are shipped with the site.
+
 ## Code
 
 Use normal fenced Markdown. Astro highlights it at build time, so readers download no syntax-highlighting JavaScript.
