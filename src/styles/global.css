@@ -30,6 +30,7 @@ h1, h2, h3, p { text-wrap: pretty; }
 .hero h1, .page-intro h1 { max-width: 48rem; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.55rem, 5.2vw, 4.65rem); font-weight: 500; letter-spacing: -.045em; line-height: 1.01; }
 .hero-summary { margin: 0; padding-left: 1.25rem; border-left: 2px solid var(--accent); color: var(--muted); font-size: .98rem; line-height: 1.65; }
 .hero-summary strong { color: var(--ink); font-weight: 600; }
+.hero-facts { display: block; margin-top: 1rem; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .68rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
 .home-section { padding: 1.5rem 0 5.25rem; scroll-margin-top: 1rem; }
 .section-label { display: flex; justify-content: space-between; gap: 1rem; padding-top: .85rem; border-top: 1px solid var(--line); color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
 .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin-top: 1.25rem; }
@@ -37,6 +38,8 @@ h1, h2, h3, p { text-wrap: pretty; }
 .work-index { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .7rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
 .work-card h2, .practice h2 { margin: 2.75rem 0 .6rem; font-size: 1.25rem; font-weight: 600; letter-spacing: -.025em; line-height: 1.15; }
 .work-card p, .practice p { margin: 0; color: var(--muted); font-size: .84rem; line-height: 1.55; }
+.work-link { display: inline-block; margin-top: 1rem; color: var(--ink); font-size: .78rem; font-weight: 600; text-decoration: none; }
+.work-link:hover, .work-link:focus-visible { color: var(--accent); }
 .writing-preview { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(2rem, 7vw, 6rem); }
 .writing-preview h2 { max-width: 20rem; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2rem, 3.2vw, 3rem); font-weight: 500; letter-spacing: -.035em; line-height: 1.05; }
 .article-row { display: grid; grid-template-columns: 1fr auto; gap: 2rem; padding: 1.15rem 0; border-top: 1px solid var(--line); text-decoration: none; }
@@ -61,6 +64,10 @@ h1, h2, h3, p { text-wrap: pretty; }
 .empty-state > p:last-child { color: var(--muted); }
 .about-section { margin-top: 5rem; }
 .about-columns { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 8vw, 7rem); margin-top: 2rem; color: var(--muted); font-size: 1rem; line-height: 1.75; }
+.systems-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 3rem; margin-top: 1.5rem; }
+.systems-list > div { padding: 1.15rem 0; border-top: 1px solid var(--line); }
+.systems-list strong { font-size: .95rem; font-weight: 550; }
+.systems-list p { margin: .35rem 0 0; color: var(--muted); font-size: .9rem; line-height: 1.6; }
 .credential-list { margin-top: 1.5rem; }
 .credential-list p { display: grid; grid-template-columns: 1fr auto; gap: 2rem; margin: 0; padding: 1.15rem 0; border-top: 1px solid var(--line); }
 .credential-list strong { font-weight: 550; }
@@ -90,14 +97,16 @@ h1, h2, h3, p { text-wrap: pretty; }
 .article-callout p { margin: 0; }
 
 @media (max-width: 760px) {
-  .site-header { align-items: flex-start; padding-top: 1.5rem; }
-  .site-header nav { display: grid; grid-template-columns: repeat(2, auto); column-gap: 1.2rem; row-gap: .45rem; }
+  .site-header { min-height: 4.75rem; align-items: center; gap: .75rem; }
+  .site-header nav { display: flex; min-width: 0; flex: 1; justify-content: flex-end; gap: clamp(.65rem, 3.5vw, 1rem); white-space: nowrap; }
+  .site-header nav a { min-height: 2.75rem; display: inline-flex; align-items: center; }
+  .site-header nav a:last-child { display: none; }
   .hero { min-height: auto; grid-template-columns: 1fr; gap: 2.5rem; padding: 5rem 0 4.5rem; }
   .hero h1 { font-size: clamp(2.65rem, 12vw, 4.1rem); }
   .hero-summary { max-width: 31rem; }
   .work-grid, .practice-grid { grid-template-columns: 1fr; }
   .work-card { min-height: 12rem; }
-  .writing-preview, .about-columns { grid-template-columns: 1fr; }
+  .writing-preview, .about-columns, .systems-list { grid-template-columns: 1fr; }
   .interior-page { padding-top: 4.5rem; }
   .page-intro { margin-bottom: 4rem; }
   .site-footer { align-items: flex-start; flex-direction: column; justify-content: center; gap: .6rem; }

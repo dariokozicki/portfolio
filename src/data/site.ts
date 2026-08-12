@@ -1,21 +1,30 @@
 export const site = {
   name: 'Darío Kozicki',
-  title: 'Darío Kozicki — Senior Software Engineer',
+  title: 'Darío Kozicki',
   description:
-    'Senior software engineer focused on cloud infrastructure, distributed systems, software modernization, and product engineering.',
+    'Backend systems, infrastructure, integrations, and modernization.',
   email: 'dariokozicki@gmail.com',
   github: 'https://github.com/dariokozicki',
   linkedin: 'https://www.linkedin.com/in/dariokozicki/',
   resume: '/resume.pdf',
 } as const;
 
-export const selectedWork = [
+type SelectedWork = {
+  index: string;
+  category: string;
+  title: string;
+  description: string;
+  article?: string;
+};
+
+export const selectedWork: readonly SelectedWork[] = [
   {
     index: '01',
     category: 'Cloud',
     title: 'Cost-aware infrastructure',
     description:
       'Finding and reducing unnecessary AWS spend without trading away reliability.',
+    article: 'cost-aware-infrastructure',
   },
   {
     index: '02',
@@ -31,4 +40,4 @@ export const selectedWork = [
     description:
       'Building campaign and marketplace systems for large commercial events.',
   },
-] as const;
+];

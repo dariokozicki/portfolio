@@ -5,20 +5,22 @@ import SectionLabel from '../components/SectionLabel.astro';
 import ArticleList from '../components/ArticleList.astro';
 import { selectedWork } from '../data/site';
 
-const articles = (await getCollection('writing', ({ data }) => !data.draft))
+const publishedArticles = (await getCollection('writing', ({ data }) => !data.draft))
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
-  .slice(0, 3);
+;
+const articles = publishedArticles.slice(0, 3);
+const publishedArticleIds = new Set(publishedArticles.map((article) => article.id));
 ---
 <BaseLayout>
   <div class="page-shell">
     <section class="hero">
       <div>
-        <p class="eyebrow">Senior software engineer · Buenos Aires</p>
-        <h1>I like understanding how complicated systems actually work.</h1>
+        <p class="eyebrow">Senior software engineer · 7 years · Buenos Aires</p>
+        <h1>Systems that hold up.</h1>
       </div>
       <p class="hero-summary">
-        I’m a software engineer working across <strong>AWS infrastructure, backend systems, and legacy modernization.</strong>
-        I tend to follow a problem across boundaries until it makes sense.
+        I build and modernize systems where <strong>data, integrations, infrastructure, and operational risk</strong> all matter.
+        <span class="hero-facts">AWS · SQL &amp; data systems · integrations</span>
       </p>
     </section>
 
@@ -31,6 +33,9 @@ const articles = (await getCollection('writing', ({ data }) => !data.draft))
             <div>
               <h2>{item.title}</h2>
               <p>{item.description}</p>
+              {item.article && publishedArticleIds.has(item.article) && (
+                <a class="work-link" href={`/writing/${item.article}/`}>Read note <span aria-hidden="true">→</span></a>
+              )}
             </div>
           </article>
         ))}
