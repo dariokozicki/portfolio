@@ -47,6 +47,14 @@ Business people (CEOs, managers, CFOs, Sales people) will usually care about uni
 
 Talk to each one about what **they** care about, not what *you* care about. Your role can be a bridge between business and product, and that gives you leverage to keep pushing for change within your organization. Understand that sometimes their priorities will be on the accrual side (new features, more sales) and not on the spend side, and that you'll need influence to make things happen.
 
+## Prioritize
+
+Generate a table mapping low hanging fruit, medium tasks, and long term objectives. Identify their efforts. For example: 
+- Config,  CloudWatch, and 'niche' services are usually short term bandaids
+- Autoscaling Groups, S3, instance types, and some queries are medium tasks
+- EC2, ECS, RDS are usually long term objectives
+Usually the more the current solution depends on the service, the hardest it is to change organizationally. Some teams will not care that their solution costs three times as much as it should.
+
 ## Use Cost Allocation Tags
 
 If you have many applications, through using microservices, or a workflow-segregated monolith, CQRS, or something else, you'll find it useful to tag them so management has a more insightful, business-related cost rather than just "EC2" or "ECS" or "Lambda". Tag it as you would like to present it, for example: environment, service, department, etc. This will have to be activated by the Owner Account in the case of AWS.

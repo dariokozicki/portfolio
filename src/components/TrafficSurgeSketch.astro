@@ -1,0 +1,145 @@
+<section class="interactive-sketch surge-sketch" data-surge-sketch aria-labelledby="surge-sketch-title">
+  <header class="sketch-heading">
+    <p>Interactive sketch</p>
+    <h2 id="surge-sketch-title">The shape of a surge</h2>
+    <span>A spike is not simply more requests. It changes which work becomes synchronous, where retries accumulate, and which dependency gets to decide the user experience.</span>
+  </header>
+
+  <div class="event-picker" role="group" aria-label="Traffic event">
+    <button type="button" data-event="baseline" aria-pressed="false"><span>01</span> Normal</button>
+    <button type="button" data-event="announcement" aria-pressed="false"><span>02</span> Announcement</button>
+    <button type="button" data-event="launch" aria-pressed="true"><span>03</span> Launch minute</button>
+    <button type="button" data-event="dependency" aria-pressed="false"><span>04</span> Dependency slows</button>
+  </div>
+
+  <div class="surge-frame" data-event="launch">
+    <div class="surge-timeline" aria-hidden="true">
+      <span data-level="baseline"></span><span data-level="announcement"></span><span data-level="launch" class="is-selected"></span><span data-level="dependency"></span>
+    </div>
+    <p class="surge-status" aria-live="polite" data-status>Launch minute: work that should be delayed or rejected is still trying to travel through the request path.</p>
+
+    <div class="flow" aria-label="Request flow from cache through application, data store, queue, and external dependency">
+      <div class="flow-node edge"><span class="node-index">01</span><strong>Edge</strong><i data-pressure></i></div>
+      <div class="flow-arrow" data-link="edge-app"><b></b><b></b><b></b><b></b></div>
+      <div class="flow-node app"><span class="node-index">02</span><strong>App</strong><i data-pressure></i></div>
+      <div class="flow-arrow" data-link="app-data"><b></b><b></b><b></b><b></b></div>
+      <div class="flow-node data"><span class="node-index">03</span><strong>Data</strong><i data-pressure></i></div>
+      <div class="flow-arrow" data-link="data-queue"><b></b><b></b><b></b><b></b></div>
+      <div class="flow-node queue"><span class="node-index">04</span><strong>Queue</strong><i data-pressure></i></div>
+      <div class="flow-arrow" data-link="queue-external"><b></b><b></b><b></b><b></b></div>
+      <div class="flow-node external"><span class="node-index">05</span><strong>External</strong><i data-pressure></i></div>
+    </div>
+
+    <div class="measure-picker" role="group" aria-label="Resilience measures">
+      <button type="button" data-measure="cache" aria-pressed="false"><span>Cache</span><small>keep hot reads out</small></button>
+      <button type="button" data-measure="queue" aria-pressed="false"><span>Queue work</span><small>move it off-path</small></button>
+      <button type="button" data-measure="limit" aria-pressed="false"><span>Rate limit</span><small>protect capacity</small></button>
+      <button type="button" data-measure="idempotent" aria-pressed="false"><span>Idempotency</span><small>make retries safe</small></button>
+      <button type="button" data-measure="degrade" aria-pressed="false"><span>Degrade</span><small>skip optional work</small></button>
+    </div>
+
+    <dl class="surge-facts">
+      <div><dt>Request path</dt><dd data-path>Too much work stays synchronous</dd></div>
+      <div><dt>Primary risk</dt><dd data-risk>Retries make the spike wider</dd></div>
+      <div><dt>Decision</dt><dd data-decision>Choose what can wait</dd></div>
+    </dl>
+  </div>
+
+  <p class="sketch-note">This is deliberately not a capacity calculator. It is a way to reason about where pressure goes once an event stops behaving like an average day.</p>
+</section>
+
+<script>
+  const eventStates = {
+    baseline: { status: 'Normal traffic: the system has room to recover from ordinary variation.', pressure: [1, 1, 1, 0, 1], path: 'The usual request path', risk: 'Ordinary variation', decision: 'Keep the model honest' },
+    announcement: { status: 'Announcement: traffic rises before the event itself. Caches warm, but background work begins to compete for attention.', pressure: [2, 2, 1, 1, 1], path: 'Reads begin to dominate', risk: 'Hot paths go cold together', decision: 'Warm what matters' },
+    launch: { status: 'Launch minute: work that should be delayed or rejected is still trying to travel through the request path.', pressure: [3, 4, 4, 3, 3], path: 'Too much work stays synchronous', risk: 'Retries make the spike wider', decision: 'Choose what can wait' },
+    dependency: { status: 'Dependency slows: the request is no longer limited by your own capacity. Waiting callers can become a second traffic spike.', pressure: [2, 3, 2, 4, 4], path: 'Requests wait on the edge', risk: 'Timeouts turn into retries', decision: 'Fail narrowly and predictably' },
+  };
+
+  type EventName = keyof typeof eventStates;
+
+  document.querySelectorAll<HTMLElement>('[data-surge-sketch]').forEach((root) => {
+    const frame = root.querySelector<HTMLElement>('.surge-frame');
+    const eventButtons = [...root.querySelectorAll<HTMLButtonElement>('.event-picker [data-event]')];
+    const measureButtons = [...root.querySelectorAll<HTMLButtonElement>('[data-measure]')];
+    const status = root.querySelector<HTMLElement>('[data-status]');
+    const path = root.querySelector<HTMLElement>('[data-path]');
+    const risk = root.querySelector<HTMLElement>('[data-risk]');
+    const decision = root.querySelector<HTMLElement>('[data-decision]');
+    if (!frame || !status || !path || !risk || !decision) return;
+    let event: EventName = 'launch';
+    const measures = new Set();
+
+    const update = () => {
+      const state = eventStates[event];
+      const pressure = [...state.pressure];
+      if (measures.has('cache')) { pressure[0] = Math.max(0, pressure[0] - 1); pressure[1] = Math.max(0, pressure[1] - 1); }
+      if (measures.has('queue')) { pressure[1] = Math.max(0, pressure[1] - 1); pressure[2] = Math.max(0, pressure[2] - 1); pressure[3] = Math.min(4, pressure[3] + 1); }
+      if (measures.has('limit')) { pressure[1] = Math.max(0, pressure[1] - 1); pressure[2] = Math.max(0, pressure[2] - 1); }
+      if (measures.has('idempotent')) { pressure[2] = Math.max(0, pressure[2] - 1); pressure[3] = Math.max(0, pressure[3] - 1); }
+      if (measures.has('degrade')) { pressure[4] = Math.max(0, pressure[4] - 2); pressure[1] = Math.max(0, pressure[1] - 1); }
+      frame.dataset.event = event;
+      status.textContent = state.status;
+      path.textContent = measures.has('queue') ? 'Only essential work stays synchronous' : state.path;
+      risk.textContent = measures.has('idempotent') ? 'Retries do less damage' : state.risk;
+      decision.textContent = measures.size ? 'Protect the critical path first' : state.decision;
+      root.querySelectorAll<HTMLElement>('[data-pressure]').forEach((meter, index) => { meter.style.setProperty('--pressure', String(pressure[index])); });
+      root.querySelectorAll<HTMLElement>('[data-link]').forEach((link, index) => { link.style.setProperty('--link-pressure', String(Math.max(pressure[index], pressure[index + 1]))); });
+      root.querySelectorAll<HTMLElement>('[data-level]').forEach((point) => point.classList.toggle('is-selected', point.dataset.level === event));
+    };
+
+    eventButtons.forEach((button) => button.addEventListener('click', () => {
+      event = button.dataset.event as EventName;
+      eventButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+      update();
+    }));
+    measureButtons.forEach((button) => button.addEventListener('click', () => {
+      const measure = button.dataset.measure;
+      if (!measure) return;
+      measures.has(measure) ? measures.delete(measure) : measures.add(measure);
+      button.setAttribute('aria-pressed', String(measures.has(measure)));
+      update();
+    }));
+    update();
+  });
+</script>
+
+<style>
+  .interactive-sketch { width: min(100%, 46rem); margin: 3.5rem auto; color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-variant-numeric: lining-nums tabular-nums; }
+  .sketch-heading { margin-bottom: 1.25rem; }
+  .sketch-heading p { margin: 0 0 .65rem; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+  .sketch-heading h2 { margin: 0; font-size: 1.5rem; font-weight: 650; letter-spacing: -.03em; line-height: 1.1; }
+  .sketch-heading span { display: block; max-width: 38rem; margin-top: .7rem; color: var(--muted); font-family: "Source Serif 4", Georgia, serif; font-size: 1rem; line-height: 1.55; }
+  .sketch-note { margin: .8rem 0 0; color: var(--muted); font-family: "Source Serif 4", Georgia, serif; font-size: .85rem; line-height: 1.5; }
+  .event-picker { display: grid; grid-template-columns: repeat(4, 1fr); gap: .35rem; margin-bottom: .75rem; }
+  .event-picker button, .measure-picker button { border: 1px solid var(--line); color: var(--muted); background: transparent; font: inherit; cursor: pointer; }
+  .event-picker button { min-width: 0; padding: .65rem .45rem; font-size: .7rem; line-height: 1.25; text-align: left; }
+  .event-picker button span { display: block; margin-bottom: .25rem; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .58rem; }
+  .event-picker button[aria-pressed="true"], .measure-picker button[aria-pressed="true"] { border-color: var(--accent); color: var(--ink); background: var(--surface); }
+  .event-picker button:focus-visible, .measure-picker button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .surge-frame { padding: 1rem; border: 1px solid var(--line); background: var(--surface); }
+  .surge-timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; align-items: end; height: 3.6rem; padding: 0 .3rem .9rem; border-bottom: 1px solid var(--line); }
+  .surge-timeline span { position: relative; display: block; height: .3rem; background: var(--line); }
+  .surge-timeline span::before { content: ''; position: absolute; right: 8%; bottom: .55rem; width: 2px; height: 1.1rem; background: var(--muted); box-shadow: -10px 0 0 var(--muted), -20px 0 0 var(--muted); opacity: .55; }
+  .surge-timeline [data-level="launch"]::before { height: 2.3rem; box-shadow: -9px .8rem 0 var(--accent), -18px .25rem 0 var(--accent), -27px 1.1rem 0 var(--accent), -36px .55rem 0 var(--accent); }
+  .surge-timeline .is-selected { background: var(--accent); }
+  .surge-status { min-height: 3.8rem; margin: 0; padding: 1rem .2rem .4rem; color: var(--muted); font-family: "Source Serif 4", Georgia, serif; font-size: .9rem; line-height: 1.45; }
+  .flow { display: grid; grid-template-columns: 1fr .55fr 1fr .55fr 1fr .55fr 1fr .55fr 1fr; align-items: center; gap: .25rem; padding: 1rem 0 1.25rem; }
+  .flow-node { min-width: 0; min-height: 6.2rem; display: flex; flex-direction: column; justify-content: space-between; padding: .7rem; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 40%, transparent); }
+  .flow-node .node-index { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .57rem; letter-spacing: .08em; }
+  .flow-node strong { font-size: .75rem; font-weight: 650; letter-spacing: -.02em; }
+  .flow-node i { display: block; height: 4px; background: linear-gradient(to right, var(--accent) calc(var(--pressure, 0) * 25%), var(--line) 0); }
+  .flow-arrow { display: grid; gap: 4px; }
+  .flow-arrow b { display: block; height: 2px; background: var(--accent); opacity: calc(.13 + var(--link-pressure, 0) * .2); }
+  .measure-picker { display: grid; grid-template-columns: repeat(5, 1fr); gap: .35rem; }
+  .measure-picker button { min-height: 4.3rem; padding: .55rem; text-align: left; }
+  .measure-picker span, .measure-picker small { display: block; }
+  .measure-picker span { color: var(--ink); font-size: .68rem; font-weight: 650; }
+  .measure-picker small { margin-top: .3rem; color: var(--muted); font-family: "Source Serif 4", Georgia, serif; font-size: .68rem; line-height: 1.2; }
+  .surge-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: .85rem 0 0; padding: .9rem .2rem .1rem; border-top: 1px solid var(--line); }
+  .surge-facts div { min-width: 0; }
+  .surge-facts dt { margin-bottom: .25rem; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .58rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .surge-facts dd { margin: 0; font-size: .72rem; line-height: 1.35; }
+  @media (max-width: 620px) { .flow { grid-template-columns: 1fr; gap: .35rem; } .flow-arrow { grid-template-columns: repeat(4, 1fr); padding: .15rem 1rem; } .flow-arrow b { height: 12px; width: 2px; justify-self: center; } .measure-picker { grid-template-columns: repeat(2, 1fr); } .surge-facts { grid-template-columns: 1fr; gap: .65rem; } .surge-facts div { display: grid; grid-template-columns: 7rem 1fr; gap: .6rem; } .surge-facts dt { margin: 0; } }
+  @media (prefers-reduced-motion: reduce) { .flow-node i, .flow-arrow b { transition: none; } }
+</style>

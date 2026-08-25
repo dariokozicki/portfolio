@@ -1,0 +1,161 @@
+<section class="interactive-sketch modernization-sketch" data-modernization-sketch aria-labelledby="modernization-sketch-title">
+  <header class="sketch-heading">
+    <p>Interactive sketch</p>
+    <h2 id="modernization-sketch-title">What owns this request?</h2>
+    <span>Move through one migration path. The important question is not which system is newer, but where the source of truth and rollback path sit today.</span>
+  </header>
+
+  <div class="stage-picker" role="group" aria-label="Migration stage">
+    <button type="button" data-stage="0" aria-pressed="true"><span>01</span> Observe</button>
+    <button type="button" data-stage="1" aria-pressed="false"><span>02</span> Stabilize</button>
+    <button type="button" data-stage="2" aria-pressed="false"><span>03</span> Shadow</button>
+    <button type="button" data-stage="3" aria-pressed="false"><span>04</span> Route</button>
+    <button type="button" data-stage="4" aria-pressed="false"><span>05</span> Own</button>
+    <button type="button" data-stage="5" aria-pressed="false"><span>06</span> Retire</button>
+  </div>
+
+  <div class="migration-frame" data-stage="0">
+    <div class="migration-status" aria-live="polite">
+      <strong data-stage-title>Observe the existing behavior</strong>
+      <span data-stage-copy>The legacy system is still the source of truth. Before moving traffic, learn which behavior and data contracts the request already depends on.</span>
+    </div>
+
+    <svg viewBox="0 0 760 300" role="img" aria-labelledby="migration-svg-title migration-svg-desc">
+      <title id="migration-svg-title">Request ownership through incremental modernization</title>
+      <desc id="migration-svg-desc">A request moves between a legacy system and a new system as migration stages change.</desc>
+      <path class="guide" d="M34 150H726" />
+      <path class="rollback" data-route="rollback" d="M594 244C470 292 266 292 166 244" />
+      <path class="request-path legacy-path" data-route="legacy" d="M32 150H174" />
+      <path class="request-path bridge-path" data-route="bridge" d="M280 150H480" />
+      <path class="request-path new-path" data-route="new" d="M586 150H728" />
+      <path class="shadow-path" data-route="shadow" d="M280 130C365 64 425 64 480 130" />
+
+      <g class="truth-legend" aria-hidden="true">
+        <circle cx="560" cy="34" r="4" />
+        <text x="571" y="38">SOURCE OF TRUTH</text>
+      </g>
+
+      <g class="system legacy-system" data-system="legacy">
+        <rect x="174" y="76" width="106" height="148" rx="4" />
+        <text x="192" y="105">LEGACY</text>
+        <rect class="system-line" x="192" y="123" width="70" height="8" rx="1" />
+        <rect class="system-line" x="192" y="140" width="52" height="8" rx="1" />
+        <rect class="system-line" x="192" y="157" width="61" height="8" rx="1" />
+        <circle class="truth-dot" data-truth="legacy" cx="227" cy="192" r="12" />
+      </g>
+
+      <g class="boundary">
+        <rect x="332" y="112" width="96" height="76" rx="4" />
+        <text x="352" y="143">BOUNDARY</text>
+        <text class="small-text" x="365" y="163">CONTRACT</text>
+      </g>
+
+      <g class="system new-system" data-system="new">
+        <rect x="480" y="76" width="106" height="148" rx="4" />
+        <text x="507" y="105">NEW</text>
+        <rect class="system-line" x="498" y="123" width="70" height="8" rx="1" />
+        <rect class="system-line" x="498" y="140" width="52" height="8" rx="1" />
+        <rect class="system-line" x="498" y="157" width="61" height="8" rx="1" />
+        <circle class="truth-dot" data-truth="new" cx="533" cy="192" r="12" />
+      </g>
+
+      <g class="request-mark" data-request="start"><circle cx="32" cy="150" r="8" /></g>
+      <g class="request-mark" data-request="end"><circle cx="728" cy="150" r="8" /></g>
+      <text class="edge-label" x="14" y="176">REQUEST</text>
+      <text class="edge-label" x="692" y="176">RESPONSE</text>
+      <rect class="rollback-label-bg" x="321" y="262" width="118" height="20" rx="2" />
+      <text class="rollback-label" x="380" y="276">ROLLBACK ROUTE</text>
+    </svg>
+
+    <dl class="migration-facts">
+      <div><dt>Primary owner</dt><dd data-owner>Legacy system</dd></div>
+      <div><dt>New path</dt><dd data-new-path>Not receiving traffic</dd></div>
+      <div><dt>Rollback</dt><dd data-rollback>Not applicable</dd></div>
+    </dl>
+  </div>
+
+  <p class="sketch-note">A useful migration has a boring answer at each step: who owns the data, which path is serving the request, and how you return when it fails.</p>
+</section>
+
+<script>
+  const stages = [
+    { title: 'Observe the existing behavior', copy: 'The legacy system is still the source of truth. Before moving traffic, learn which behavior and data contracts the request already depends on.', owner: 'Legacy system', path: 'Not receiving traffic', rollback: 'Not applicable', routes: ['legacy'], truth: 'legacy' },
+    { title: 'Stabilize a boundary', copy: 'The request now has one explicit entry point. The old system still owns the outcome, but the seam is visible enough to test.', owner: 'Legacy system', path: 'Behind a stable boundary', rollback: 'Legacy remains primary', routes: ['legacy', 'bridge'], truth: 'legacy' },
+    { title: 'Shadow the new path', copy: 'The new path observes real traffic without deciding the result. Differences are information, not yet incidents.', owner: 'Legacy system', path: 'Shadow read or replay', rollback: 'Immediate: response is still legacy', routes: ['legacy', 'bridge', 'shadow'], truth: 'legacy' },
+    { title: 'Route one narrow slice', copy: 'A bounded group uses the new path. Keep the slice small enough that a rollback is a decision, not an emergency.', owner: 'Legacy system, with a new slice', path: 'Serving one bounded slice', rollback: 'Route the slice back', routes: ['legacy', 'bridge', 'new', 'shadow', 'rollback'], truth: 'legacy' },
+    { title: 'Transfer ownership', copy: 'The new system now owns the request and its data. The old path is a fallback while you prove the change holds.', owner: 'New system', path: 'Serving the primary flow', rollback: 'Temporary fallback remains', routes: ['bridge', 'new', 'shadow', 'rollback'], truth: 'new' },
+    { title: 'Retire the old path', copy: 'Only remove the old system after the behavior, operations, and ownership have moved. Deletion is the last migration step.', owner: 'New system', path: 'Serving all traffic', rollback: 'A new change, not a switch', routes: ['bridge', 'new'], truth: 'new' },
+  ];
+
+  document.querySelectorAll<HTMLElement>('[data-modernization-sketch]').forEach((root) => {
+    const frame = root.querySelector<HTMLElement>('.migration-frame');
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('.stage-picker [data-stage]')];
+    const title = root.querySelector<HTMLElement>('[data-stage-title]');
+    const copy = root.querySelector<HTMLElement>('[data-stage-copy]');
+    const owner = root.querySelector<HTMLElement>('[data-owner]');
+    const newPath = root.querySelector<HTMLElement>('[data-new-path]');
+    const rollback = root.querySelector<HTMLElement>('[data-rollback]');
+    if (!frame || !title || !copy || !owner || !newPath || !rollback) return;
+    const setStage = (index: number) => {
+      const stage = stages[index];
+      frame.dataset.stage = String(index);
+      title.textContent = stage.title;
+      copy.textContent = stage.copy;
+      owner.textContent = stage.owner;
+      newPath.textContent = stage.path;
+      rollback.textContent = stage.rollback;
+      root.querySelectorAll<HTMLElement>('[data-route]').forEach((route) => {
+        route.classList.toggle('is-active', stage.routes.includes(route.dataset.route || ''));
+      });
+      root.querySelectorAll<HTMLElement>('[data-truth]').forEach((marker) => {
+        marker.classList.toggle('is-active', marker.dataset.truth === stage.truth);
+      });
+      buttons.forEach((button, buttonIndex) => button.setAttribute('aria-pressed', String(buttonIndex === index)));
+    };
+    buttons.forEach((button) => button.addEventListener('click', () => setStage(Number(button.dataset.stage || '0'))));
+  });
+</script>
+
+<style>
+  .interactive-sketch { width: min(100%, 46rem); margin: 3.5rem auto; color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-variant-numeric: lining-nums tabular-nums; }
+  .sketch-heading { margin-bottom: 1.25rem; }
+  .sketch-heading p { margin: 0 0 .65rem; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+  .sketch-heading h2 { margin: 0; font-size: 1.5rem; font-weight: 650; letter-spacing: -.03em; line-height: 1.1; }
+  .sketch-heading span { display: block; max-width: 38rem; margin-top: .7rem; color: var(--muted); font-family: "Source Serif 4", Georgia, serif; font-size: 1rem; line-height: 1.55; }
+  .stage-picker { display: grid; grid-template-columns: repeat(6, 1fr); gap: .35rem; margin-bottom: .75rem; }
+  .stage-picker button { min-width: 0; padding: .65rem .35rem; border: 1px solid var(--line); color: var(--muted); background: transparent; font: inherit; font-size: .68rem; line-height: 1.25; text-align: left; cursor: pointer; }
+  .stage-picker button span { display: block; margin-bottom: .25rem; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .58rem; }
+  .stage-picker button[aria-pressed="true"] { border-color: var(--accent); color: var(--ink); background: var(--surface); }
+  .stage-picker button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .migration-frame { padding: 1rem; border: 1px solid var(--line); background: var(--surface); }
+  .migration-status { display: grid; gap: .35rem; min-height: 4.2rem; padding: .2rem .2rem 1rem; }
+  .migration-status strong { font-size: .88rem; font-weight: 650; }
+  .migration-status span { color: var(--muted); font-family: "Source Serif 4", Georgia, serif; font-size: .88rem; line-height: 1.45; }
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .guide { stroke: var(--line); stroke-width: 1; }
+  .request-path, .shadow-path { fill: none; stroke: var(--accent); stroke-width: 2.2; opacity: .12; transition: opacity 180ms ease; }
+  .shadow-path { stroke-dasharray: 5 6; }
+  .rollback { fill: none; stroke: var(--muted); stroke-width: 1.6; stroke-dasharray: 4 7; opacity: 0; transition: opacity 180ms ease; }
+  [data-route].is-active { opacity: 1; }
+  .system rect:first-child, .boundary rect { fill: color-mix(in srgb, var(--paper) 40%, transparent); stroke: var(--line); stroke-width: 1.2; }
+  .system-line { fill: var(--muted); opacity: .48; }
+  .system text, .boundary text, .edge-label, .rollback-label { fill: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; font-weight: 600; letter-spacing: 1px; }
+  .boundary text { fill: var(--ink); font-size: 9px; }
+  .boundary .small-text { fill: var(--muted); font-size: 8px; }
+  .truth-dot { fill: var(--paper); stroke: var(--line); stroke-width: 1.5; }
+  .truth-dot.is-active { fill: var(--accent); stroke: var(--accent); }
+  .truth-legend circle { fill: var(--accent); }
+  .truth-legend text { fill: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 8px; font-weight: 600; letter-spacing: .8px; }
+  .request-mark circle { fill: var(--paper); stroke: var(--accent); stroke-width: 2; }
+  .rollback-label, .rollback-label-bg { opacity: 0; transition: opacity 180ms ease; }
+  .rollback-label { fill: var(--muted); font-size: 9px; text-anchor: middle; }
+  .rollback-label-bg { fill: var(--surface); }
+  .rollback.is-active ~ .rollback-label, .rollback.is-active ~ .rollback-label-bg { opacity: 1; }
+  .migration-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: .7rem 0 0; padding: .9rem .2rem .1rem; border-top: 1px solid var(--line); }
+  .migration-facts div { min-width: 0; }
+  .migration-facts dt { margin-bottom: .25rem; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .58rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .migration-facts dd { margin: 0; font-size: .72rem; line-height: 1.35; }
+  .sketch-note { margin: .8rem 0 0; color: var(--muted); font-family: "Source Serif 4", Georgia, serif; font-size: .85rem; line-height: 1.5; }
+  @media (max-width: 620px) { .stage-picker { grid-template-columns: repeat(3, 1fr); } .migration-facts { grid-template-columns: 1fr; gap: .65rem; } .migration-facts div { display: grid; grid-template-columns: 7rem 1fr; gap: .6rem; } .migration-facts dt { margin: 0; } }
+  @media (prefers-reduced-motion: reduce) { .request-path, .shadow-path, .rollback { transition: none; } }
+</style>

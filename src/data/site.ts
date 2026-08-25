@@ -32,6 +32,7 @@ export const selectedWork: readonly SelectedWork[] = [
     title: 'Incremental modernization',
     description:
       'Breaking down legacy systems in small steps instead of committing to a risky rewrite.',
+    article: 'incremental-modernization',
   },
   {
     index: '03',
@@ -39,5 +40,6 @@ export const selectedWork: readonly SelectedWork[] = [
     title: 'High-traffic platforms',
     description:
       'Building campaign and marketplace systems for large commercial events.',
+    article: 'high-traffic-platforms',
   },
 ];

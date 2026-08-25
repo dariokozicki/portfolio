@@ -1,7 +1,7 @@
 ---
 title: The Pursuit of Value
 description: Notes on growing up alongside software
-publishedAt: 2026-08-11
+publishedAt: 2026-04-11
 topics:
   - AI
   - Engineering

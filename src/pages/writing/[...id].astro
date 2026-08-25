@@ -1,9 +1,12 @@
 ---
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import DependencyMapSketch from '../../components/DependencyMapSketch.astro';
+import ModernizationSketch from '../../components/ModernizationSketch.astro';
+import TrafficSurgeSketch from '../../components/TrafficSurgeSketch.astro';
 
 export async function getStaticPaths() {
-  const articles = await getCollection('writing', ({ data }) => !data.draft);
+  const articles = await getCollection('writing', ({ data }) => import.meta.env.DEV || !data.draft);
   return articles.map((article) => ({ params: { id: article.id }, props: { article } }));
 }
 
@@ -20,6 +23,11 @@ const published = new Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(ar
       <p>{article.data.description}</p>
       <div><time datetime={article.data.publishedAt.toISOString()}>{published}</time><span>{article.data.topics.join(' · ')}</span></div>
     </header>
-    <div class="prose"><Content /></div>
+    <div class="prose">
+      <Content />
+      {article.id === 'incremental-modernization' && <ModernizationSketch />}
+      {article.id === 'incremental-modernization' && <DependencyMapSketch />}
+      {article.id === 'high-traffic-platforms' && <TrafficSurgeSketch />}
+    </div>
   </article>
 </BaseLayout>

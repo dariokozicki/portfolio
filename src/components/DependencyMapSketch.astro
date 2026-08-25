@@ -1,0 +1,171 @@
+<section class="dependency-sketch" data-dependency-sketch aria-labelledby="dependency-sketch-title">
+  <header class="dependency-heading">
+    <p>Interactive sketch</p>
+    <h2 id="dependency-sketch-title">Trace the seam before you move it.</h2>
+    <span>A migration is rarely confined to the application everyone can name. Select a system to see the immediate dependencies and consumers that have to stay true while you change it.</span>
+  </header>
+
+  <div class="dependency-stages" role="group" aria-label="Architecture stage">
+    <button type="button" data-phase-button="1" aria-pressed="true"><span>01</span> Existing path</button>
+    <button type="button" data-phase-button="2" aria-pressed="false"><span>02</span> Add services</button>
+    <button type="button" data-phase-button="3" aria-pressed="false"><span>03</span> Add portals</button>
+  </div>
+
+  <div class="dependency-frame" data-phase="1">
+    <div class="dependency-status" aria-live="polite">
+      <strong data-phase-title>Start with the path that already works.</strong>
+      <span data-phase-copy>Before moving any part of it, make the entry point, the legacy application, and the shared data store explicit.</span>
+    </div>
+
+    <svg viewBox="0 0 760 500" role="img" aria-labelledby="dependency-map-title dependency-map-desc">
+      <title id="dependency-map-title">Generic system dependency map</title>
+      <desc id="dependency-map-desc">A generic web platform with an entry router, portals, a legacy application, supporting services, a data store, and an external service. Selecting a system highlights its direct relationships.</desc>
+      <defs>
+        <marker id="dependency-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" /></marker>
+      </defs>
+
+      <g class="dependency-links" aria-hidden="true">
+        <path data-from="edge" data-to="legacy" data-introduced="1" d="M365 78L160 143" />
+        <path data-from="edge" data-to="portal" data-introduced="3" d="M380 78V143" />
+        <path data-from="edge" data-to="companion" data-introduced="3" d="M395 78L618 143" />
+        <path data-from="legacy" data-to="database" data-introduced="1" d="M127 235L120 378" />
+        <path data-from="legacy" data-to="reports" data-introduced="2" d="M185 235L285 322" />
+        <path data-from="legacy" data-to="analytics" data-introduced="2" d="M225 235L478 315" />
+        <path data-from="portal" data-to="reports" data-introduced="3" d="M360 215L327 322" />
+        <path data-from="portal" data-to="analytics" data-introduced="3" d="M408 215L490 315" />
+        <path data-from="portal" data-to="external" data-introduced="3" d="M470 183L630 362" />
+        <path data-from="companion" data-to="external" data-introduced="3" d="M618 215L670 355" />
+        <path data-from="database" data-to="reports" data-introduced="2" d="M190 410L260 384" />
+        <path data-from="database" data-to="analytics" data-introduced="2" d="M190 430L455 385" />
+        <path data-from="analytics" data-to="external" data-introduced="2" d="M576 355L630 375" />
+      </g>
+
+      <g class="dependency-nodes">
+        <g class="dependency-node" data-node="edge" data-introduced="1" tabindex="0" role="button" aria-label="Select entry router"><rect x="310" y="25" width="140" height="54" rx="4" /><text x="380" y="57">ENTRY ROUTER</text></g>
+        <g class="dependency-node" data-node="legacy" data-introduced="1" tabindex="0" role="button" aria-label="Select legacy web app"><rect x="55" y="143" width="170" height="92" rx="4" /><text x="140" y="180">LEGACY WEB APP</text><text class="node-subtitle" x="140" y="202">EXISTING PATH</text></g>
+        <g class="dependency-node" data-node="portal" data-introduced="3" tabindex="0" role="button" aria-label="Select primary portal"><rect x="300" y="143" width="170" height="72" rx="4" /><text x="385" y="180">PRIMARY PORTAL</text></g>
+        <g class="dependency-node" data-node="companion" data-introduced="3" tabindex="0" role="button" aria-label="Select companion portal"><rect x="550" y="143" width="140" height="72" rx="4" /><text x="620" y="180">COMPANION</text><text class="node-subtitle" x="620" y="202">PORTAL</text></g>
+        <g class="dependency-node" data-node="reports" data-introduced="2" tabindex="0" role="button" aria-label="Select reporting service"><rect x="225" y="322" width="130" height="62" rx="4" /><text x="290" y="359">REPORTING</text></g>
+        <g class="dependency-node" data-node="analytics" data-introduced="2" tabindex="0" role="button" aria-label="Select analytics service"><rect x="455" y="315" width="122" height="76" rx="4" /><text x="516" y="350">ANALYTICS</text><text class="node-subtitle" x="516" y="370">SERVICE</text></g>
+        <g class="dependency-node" data-node="external" data-introduced="2" tabindex="0" role="button" aria-label="Select external service"><rect x="630" y="355" width="105" height="58" rx="4" /><text x="682" y="388">EXTERNAL</text></g>
+        <g class="dependency-node" data-node="database" data-introduced="1" tabindex="0" role="button" aria-label="Select data store"><rect x="55" y="378" width="135" height="92" rx="4" /><text x="122" y="420">DATA STORE</text><text class="node-subtitle" x="122" y="442">SHARED STATE</text></g>
+      </g>
+    </svg>
+
+    <p class="dependency-selection" aria-live="polite"><strong data-dependency-title>Legacy web app</strong><span data-dependency-copy>Sends traffic or data to the data store.</span></p>
+
+    <div class="dependency-legend" aria-hidden="true"><span class="legend-selected"></span> Selected system <span class="legend-dependency"></span> Direct dependency <span class="legend-consumer"></span> Direct consumer</div>
+  </div>
+
+  <p class="dependency-note">This is not an architecture diagram for a particular company. It is the kind of dependency map worth drawing before calling something “just a rewrite.”</p>
+</section>
+
+<script>
+  const nodeLabels: Record<string, string> = {
+    edge: 'Entry router', legacy: 'Legacy web app', portal: 'Primary portal', companion: 'Companion portal', reports: 'Reporting service', analytics: 'Analytics service', external: 'External service', database: 'Data store',
+  };
+  const phases = {
+    1: { title: 'Start with the path that already works.', copy: 'Before moving any part of it, make the entry point, the legacy application, and the shared data store explicit.' },
+    2: { title: 'Add the services that make the path wider.', copy: 'Reporting, analytics, and external calls introduce separate contracts. They are now part of the migration whether they were in the original plan or not.' },
+    3: { title: 'Add the portals last.', copy: 'New front-end paths bring their own traffic and integration edges. The visible surface has changed, but the old dependencies still need to hold.' },
+  } as const;
+
+  document.querySelectorAll<HTMLElement>('[data-dependency-sketch]').forEach((root) => {
+    const nodes = [...root.querySelectorAll<HTMLElement>('[data-node]')];
+    const links = [...root.querySelectorAll<SVGPathElement>('[data-from][data-to]')];
+    const frame = root.querySelector<HTMLElement>('.dependency-frame');
+    const phaseButtons = [...root.querySelectorAll<HTMLButtonElement>('[data-phase-button]')];
+    const phaseTitle = root.querySelector<HTMLElement>('[data-phase-title]');
+    const phaseCopy = root.querySelector<HTMLElement>('[data-phase-copy]');
+    const title = root.querySelector<HTMLElement>('[data-dependency-title]');
+    const copy = root.querySelector<HTMLElement>('[data-dependency-copy]');
+    if (!frame || !phaseTitle || !phaseCopy || !title || !copy) return;
+
+    let phase = 1;
+    const isVisible = (element: HTMLElement | SVGPathElement) => Number(element.dataset.introduced || '1') <= phase;
+
+    const select = (selected: string) => {
+      const dependencies = links.filter((link) => isVisible(link) && link.dataset.from === selected).map((link) => link.dataset.to || '');
+      const consumers = links.filter((link) => isVisible(link) && link.dataset.to === selected).map((link) => link.dataset.from || '');
+      nodes.forEach((node) => {
+        const visible = isVisible(node);
+        node.classList.toggle('is-visible', visible);
+        node.classList.toggle('is-selected', visible && node.dataset.node === selected);
+        node.classList.toggle('is-dependency', visible && dependencies.includes(node.dataset.node || ''));
+        node.classList.toggle('is-consumer', visible && consumers.includes(node.dataset.node || ''));
+      });
+      links.forEach((link) => {
+        const visible = isVisible(link);
+        link.classList.toggle('is-visible', visible);
+        link.classList.toggle('is-dependency', visible && link.dataset.from === selected);
+        link.classList.toggle('is-consumer', visible && link.dataset.to === selected);
+      });
+      const dependencyText = dependencies.length ? `Sends traffic or data to ${dependencies.map((node) => nodeLabels[node]).join(' and ')}.` : 'Has no outgoing relationship shown here.';
+      const consumerText = consumers.length ? ` Receives traffic or data from ${consumers.map((node) => nodeLabels[node]).join(' and ')}.` : '';
+      title.textContent = nodeLabels[selected];
+      copy.textContent = dependencyText + consumerText;
+    };
+
+    const setPhase = (nextPhase: number) => {
+      phase = nextPhase;
+      frame.dataset.phase = String(phase);
+      const content = phases[phase as keyof typeof phases];
+      phaseTitle.textContent = content.title;
+      phaseCopy.textContent = content.copy;
+      phaseButtons.forEach((button) => button.setAttribute('aria-pressed', String(Number(button.dataset.phaseButton) === phase)));
+      select('legacy');
+    };
+
+    nodes.forEach((node) => {
+      const choose = () => select(node.dataset.node || 'legacy');
+      node.addEventListener('click', choose);
+      node.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); choose(); }
+      });
+    });
+    phaseButtons.forEach((button) => button.addEventListener('click', () => setPhase(Number(button.dataset.phaseButton || '1'))));
+    setPhase(1);
+  });
+</script>
+
+<style>
+  .dependency-sketch { width: min(100%, 46rem); margin: 4.5rem auto 3.5rem; color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-variant-numeric: lining-nums tabular-nums; }
+  .dependency-heading { margin-bottom: 1.25rem; }
+  .dependency-heading p { margin: 0 0 .65rem; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+  .dependency-heading h2 { margin: 0; font-size: 1.5rem; font-weight: 650; letter-spacing: -.03em; line-height: 1.1; }
+  .dependency-heading span { display: block; max-width: 38rem; margin-top: .7rem; color: var(--muted); font-family: "Source Serif 4", Georgia, serif; font-size: 1rem; line-height: 1.55; }
+  .dependency-stages { display: grid; grid-template-columns: repeat(3, 1fr); gap: .35rem; margin-bottom: .75rem; }
+  .dependency-stages button { min-width: 0; padding: .65rem .5rem; border: 1px solid var(--line); color: var(--muted); background: transparent; font: inherit; font-size: .68rem; line-height: 1.25; text-align: left; cursor: pointer; }
+  .dependency-stages button span { display: block; margin-bottom: .25rem; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .58rem; }
+  .dependency-stages button[aria-pressed="true"] { border-color: var(--accent); color: var(--ink); background: var(--surface); }
+  .dependency-stages button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .dependency-frame { padding: 1rem; border: 1px solid var(--line); background: var(--surface); }
+  .dependency-status { display: grid; gap: .35rem; min-height: 3.9rem; padding: .2rem .2rem .8rem; }
+  .dependency-status strong { font-size: .88rem; font-weight: 650; }
+  .dependency-status span { color: var(--muted); font-family: "Source Serif 4", Georgia, serif; font-size: .88rem; line-height: 1.45; }
+  .dependency-frame svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .dependency-links path { display: none; fill: none; stroke: var(--line); stroke-width: 1.3; marker-end: url(#dependency-arrow); opacity: .46; transition: opacity 160ms ease, stroke 160ms ease; }
+  .dependency-links path.is-visible { display: block; }
+  .dependency-links path.is-dependency { stroke: var(--accent); stroke-width: 2; opacity: 1; }
+  .dependency-links path.is-consumer { stroke: var(--ink); opacity: .82; }
+  marker path { fill: var(--line); }
+  .dependency-node { display: none; cursor: pointer; outline: none; }
+  .dependency-node.is-visible { display: block; }
+  .dependency-node rect { fill: color-mix(in srgb, var(--paper) 40%, transparent); stroke: var(--line); stroke-width: 1.2; transition: fill 160ms ease, stroke 160ms ease; }
+  .dependency-node text { fill: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 10px; font-weight: 600; letter-spacing: .75px; text-anchor: middle; pointer-events: none; }
+  .dependency-node .node-subtitle { font-size: 8px; fill: var(--muted); }
+  .dependency-node.is-selected rect { fill: color-mix(in srgb, var(--accent) 15%, var(--surface)); stroke: var(--accent); stroke-width: 2; }
+  .dependency-node.is-selected text { fill: var(--ink); }
+  .dependency-node.is-dependency rect { stroke: var(--accent); }
+  .dependency-node.is-consumer rect { stroke: var(--ink); }
+  .dependency-node:focus-visible rect { stroke: var(--accent); stroke-width: 2; }
+  .dependency-selection { display: grid; gap: .25rem; margin: .4rem .2rem 0; padding-top: .7rem; border-top: 1px solid var(--line); }
+  .dependency-selection strong { font-size: .72rem; font-weight: 650; }
+  .dependency-selection span { color: var(--muted); font-family: "Source Serif 4", Georgia, serif; font-size: .82rem; line-height: 1.4; }
+  .dependency-legend { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .8rem; margin: .5rem .2rem 0; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .56rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
+  .dependency-legend span { width: .5rem; height: .5rem; border: 1px solid var(--line); }
+  .dependency-legend .legend-selected { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 35%, var(--surface)); }
+  .dependency-legend .legend-dependency { border-color: var(--accent); }
+  .dependency-legend .legend-consumer { border-color: var(--ink); }
+  .dependency-note { margin: .8rem 0 0; color: var(--muted); font-family: "Source Serif 4", Georgia, serif; font-size: .85rem; line-height: 1.5; }
+</style>
