@@ -50,9 +50,10 @@ Talk to each one about what **they** care about, not what *you* care about. Your
 ## Prioritize
 
 Generate a table mapping low hanging fruit, medium tasks, and long term objectives. Identify their efforts. For example: 
-- Config,  CloudWatch, and 'niche' services are usually short term bandaids
+- Config,  CloudWatch, and 'niche' services are usually short term band aids
 - Autoscaling Groups, S3, instance types, and some queries are medium tasks
 - EC2, ECS, RDS are usually long term objectives
+
 Usually the more the current solution depends on the service, the hardest it is to change organizationally. Some teams will not care that their solution costs three times as much as it should.
 
 ## Use Cost Allocation Tags

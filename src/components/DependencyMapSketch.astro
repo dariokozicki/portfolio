@@ -8,7 +8,7 @@
   <div class="dependency-stages" role="group" aria-label="Architecture stage">
     <button type="button" data-phase-button="1" aria-pressed="true"><span>01</span> Existing path</button>
     <button type="button" data-phase-button="2" aria-pressed="false"><span>02</span> Add services</button>
-    <button type="button" data-phase-button="3" aria-pressed="false"><span>03</span> Add portals</button>
+    <button type="button" data-phase-button="3" aria-pressed="false"><span>03</span> Introduce new interface</button>
   </div>
 
   <div class="dependency-frame" data-phase="1">
@@ -43,9 +43,9 @@
       <g class="dependency-nodes">
         <g class="dependency-node" data-node="edge" data-introduced="1" tabindex="0" role="button" aria-label="Select entry router"><rect x="310" y="25" width="140" height="54" rx="4" /><text x="380" y="57">ENTRY ROUTER</text></g>
         <g class="dependency-node" data-node="legacy" data-introduced="1" tabindex="0" role="button" aria-label="Select legacy web app"><rect x="55" y="143" width="170" height="92" rx="4" /><text x="140" y="180">LEGACY WEB APP</text><text class="node-subtitle" x="140" y="202">EXISTING PATH</text></g>
-        <g class="dependency-node" data-node="portal" data-introduced="3" tabindex="0" role="button" aria-label="Select primary portal"><rect x="300" y="143" width="170" height="72" rx="4" /><text x="385" y="180">PRIMARY PORTAL</text></g>
+        <g class="dependency-node" data-node="portal" data-introduced="3" tabindex="0" role="button" aria-label="Select primary portal"><rect x="300" y="143" width="170" height="72" rx="4" /><text x="385" y="180">PRIMARY</text><text class="node-subtitle" x="385" y="202">PORTAL</text></g>
         <g class="dependency-node" data-node="companion" data-introduced="3" tabindex="0" role="button" aria-label="Select companion portal"><rect x="550" y="143" width="140" height="72" rx="4" /><text x="620" y="180">COMPANION</text><text class="node-subtitle" x="620" y="202">PORTAL</text></g>
-        <g class="dependency-node" data-node="reports" data-introduced="2" tabindex="0" role="button" aria-label="Select reporting service"><rect x="225" y="322" width="130" height="62" rx="4" /><text x="290" y="359">REPORTING</text></g>
+        <g class="dependency-node" data-node="reports" data-introduced="2" tabindex="0" role="button" aria-label="Select reporting service"><rect x="225" y="322" width="130" height="62" rx="4" /><text x="290" y="350">REPORTING</text><text class="node-subtitle" x="290" y="370">SERVICE</text></g>
         <g class="dependency-node" data-node="analytics" data-introduced="2" tabindex="0" role="button" aria-label="Select analytics service"><rect x="455" y="315" width="122" height="76" rx="4" /><text x="516" y="350">ANALYTICS</text><text class="node-subtitle" x="516" y="370">SERVICE</text></g>
         <g class="dependency-node" data-node="external" data-introduced="2" tabindex="0" role="button" aria-label="Select external service"><rect x="630" y="355" width="105" height="58" rx="4" /><text x="682" y="388">EXTERNAL</text></g>
         <g class="dependency-node" data-node="database" data-introduced="1" tabindex="0" role="button" aria-label="Select data store"><rect x="55" y="378" width="135" height="92" rx="4" /><text x="122" y="420">DATA STORE</text><text class="node-subtitle" x="122" y="442">SHARED STATE</text></g>
@@ -67,7 +67,7 @@
   const phases = {
     1: { title: 'Start with the path that already works.', copy: 'Before moving any part of it, make the entry point, the legacy application, and the shared data store explicit.' },
     2: { title: 'Add the services that make the path wider.', copy: 'Reporting, analytics, and external calls introduce separate contracts. They are now part of the migration whether they were in the original plan or not.' },
-    3: { title: 'Add the portals last.', copy: 'New front-end paths bring their own traffic and integration edges. The visible surface has changed, but the old dependencies still need to hold.' },
+    3: { title: 'Introduce a new interface.', copy: 'New interface paths bring their own traffic and integration edges. The visible surface has changed, but the old dependencies still need to hold.' },
   } as const;
 
   document.querySelectorAll<HTMLElement>('[data-dependency-sketch]').forEach((root) => {

@@ -25,9 +25,27 @@ const published = new Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(ar
     </header>
     <div class="prose">
       <Content />
-      {article.id === 'incremental-modernization' && <ModernizationSketch />}
-      {article.id === 'incremental-modernization' && <DependencyMapSketch />}
-      {article.id === 'high-traffic-platforms' && <TrafficSurgeSketch />}
+      {article.id === 'incremental-modernization' && <>
+        <ModernizationSketch />
+        <DependencyMapSketch />
+        <script is:inline>
+          const placeSketch = (anchorName, sketchSelector) => {
+            const anchor = document.querySelector(`[data-sketch-anchor="${anchorName}"]`);
+            const sketch = document.querySelector(sketchSelector);
+            if (anchor && sketch) anchor.replaceWith(sketch);
+          };
+          placeSketch('ownership', '[data-modernization-sketch]');
+          placeSketch('dependencies', '[data-dependency-sketch]');
+        </script>
+      </>}
+      {article.id === 'high-traffic-platforms' && <>
+        <TrafficSurgeSketch />
+        <script is:inline>
+          const trafficAnchor = document.querySelector('[data-sketch-anchor="traffic-surge"]');
+          const trafficSketch = document.querySelector('[data-traffic-surge-sketch]');
+          if (trafficAnchor && trafficSketch) trafficAnchor.replaceWith(trafficSketch);
+        </script>
+      </>}
     </div>
   </article>
 </BaseLayout>

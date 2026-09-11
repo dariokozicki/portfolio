@@ -1,11 +1,11 @@
 :root {
-  color-scheme: light dark;
-  --paper: light-dark(#f4f2ec, #111210);
-  --ink: light-dark(#171713, #ebece5);
-  --muted: light-dark(#62635b, #a4a79f);
-  --line: light-dark(#ccc9bf, #30322d);
-  --surface: light-dark(#eae6dc, #1a1c17);
-  --accent: light-dark(#b9472f, #e87359);
+  color-scheme: dark;
+  --paper: #111210;
+  --ink: #ebece5;
+  --muted: #a4a79f;
+  --line: #30322d;
+  --surface: #1a1c17;
+  --accent: #e87359;
   --accent-contrast: #fffaf6;
   --content: 1160px;
   --gutter: clamp(1.25rem, 5vw, 4rem);
