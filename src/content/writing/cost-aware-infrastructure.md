@@ -1,7 +1,7 @@
 ---
 title: Cost-aware infrastructure
 description: Cost is a system-design concern, not a monthly surprise.
-publishedAt: 2026-08-25
+publishedAt: 2026-09-10
 topics:
   - Cloud
   - AWS

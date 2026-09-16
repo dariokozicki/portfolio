@@ -1,7 +1,7 @@
 ---
 title: The Pursuit of Value
 description: Notes on growing up alongside software
-publishedAt: 2026-04-11
+publishedAt: 2026-07-15
 topics:
   - AI
   - Engineering
@@ -36,4 +36,3 @@ I can still take pride in an elegant abstraction. But elegance does not prove th
 When I think back to that school expo, nobody cared how the game was written. They cared that it was funny, that it surprised them, and that they could play it again. Years later, after learning how much was wrong with the code, I don’t feel any less proud of it.
 
 AI has not changed the source of value. It has only made it harder for us to confuse value with code.
-

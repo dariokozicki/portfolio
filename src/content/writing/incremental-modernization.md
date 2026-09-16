@@ -1,7 +1,7 @@
 ---
 title: Incremental modernization
 description: A rewrite is rarely a single decision. It is a long interval in which ownership has to move without losing the ability to return.
-publishedAt: 2026-08-25
+publishedAt: 2026-05-06
 topics:
   - Legacy systems
   - Architecture

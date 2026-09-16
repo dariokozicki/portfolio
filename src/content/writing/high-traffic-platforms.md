@@ -1,7 +1,7 @@
 ---
 title: High-traffic platforms
 description: Large events do not just bring more traffic. They change the shape of the system's failure modes.
-publishedAt: 2026-08-25
+publishedAt: 2026-03-18
 topics:
   - Scale
   - Reliability
